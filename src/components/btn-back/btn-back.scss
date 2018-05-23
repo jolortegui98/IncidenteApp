@@ -1,0 +1,12 @@
+btn-back {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1rem;
+
+  .btn-back {
+    border-radius: 4rem;
+    &__icon {
+      margin-right: .5rem;
+    }
+  }
+}

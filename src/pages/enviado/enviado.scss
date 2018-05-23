@@ -1,0 +1,27 @@
+page-enviado {
+  .header {
+    text-align: center;
+    margin-top: 20%;
+    &__description {
+      color: map-get($colors, secondary);
+      font-size: 1.8rem;
+    }
+  }
+  #type {
+    &-btn {
+      &--call {
+        background: map-get($colors, detail);
+        .label {
+          color: map-get($colors, light);
+        }
+      }
+      &--home {
+        background: map-get($colors, primary);
+        .label {
+          color: map-get($colors, light);
+        }
+      }
+
+    }
+  }
+}

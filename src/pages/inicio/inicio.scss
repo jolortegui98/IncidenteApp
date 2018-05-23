@@ -1,0 +1,66 @@
+page-inicio {
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__title {
+      margin-bottom: 0;
+    }
+    ion-icon {
+      font-size: 2.5rem;
+    }
+  }
+  .slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20rem;
+    &__input {
+      position: relative;
+      width: 92.5%;
+      height: 8rem;
+      background: color($colors, detail);
+      box-shadow: inset 0 0 2rem rgba(black, .1);
+      -webkit-appearance: none;
+      border-radius: 4rem;
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 8rem;
+        width: 8rem;
+        border-radius: 100%;
+        background: color($colors, primary);
+        z-index: 1;
+        position: relative;
+        box-shadow: 0 0 1rem rgba(black, .25);
+      }
+      &:before {
+        content: "Desliza para registrar un incidente";
+        font-family: 'Montserrat', sans-serif;
+        color: color($colors, light);
+        position: absolute;
+        left: 9rem;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 1;
+        font-size: 1.4rem;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  .footer {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    &__list {
+      list-style: none;
+      padding-left: .75rem;
+      margin-top: 1rem;
+      &-item {
+        color: color($colors, secondary);
+        margin-top: .5rem;
+      }
+    }
+  }
+}

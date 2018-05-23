@@ -1,6 +1,4 @@
 // http://ionicframework.com/docs/theming/
-
-
 // App Global Sass
 // --------------------------------------------------
 // Put style rules here that you want to apply globally. These
@@ -14,3 +12,85 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+// Fonts
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./../assets/fonts/Montserrat-Bold.eot');
+  src: url('./../assets/fonts/Montserrat-Bold.eot?#iefix') format('embedded-opentype'), url('./../assets/fonts/Montserrat-Bold.woff2') format('woff2'), url('./../assets/fonts/Montserrat-Bold.woff') format('woff'), url('./../assets/fonts/Montserrat-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./../assets/fonts/Montserrat-Regular.eot');
+  src: url('./../assets/fonts/Montserrat-Regular.eot?#iefix') format('embedded-opentype'), url('./../assets/fonts/Montserrat-Regular.woff2') format('woff2'), url('./../assets/fonts/Montserrat-Regular.woff') format('woff'), url('./../assets/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// General
+h1,
+h2,
+h3,
+h4,
+ul,
+p,
+input,
+a,
+.label,
+.btn {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-weight: bold;
+    color: color($colors, title);
+}
+
+ion-content {
+    background: color($colors, background) !important;
+}
+
+.progress-bar {
+    width: 100%;
+    display: flex;
+
+    &__section {
+        height: .5rem;
+        background: color($colors, light);
+        width: 33.3%;
+        border-radius: 1rem;
+        margin: 0 .4rem;
+        box-shadow: $shadow-depth;
+
+        &.is-active {
+            background: color($colors, primary);
+        }
+    }
+}
+
+.header {
+    margin: 5rem 0;
+}
+
+.btn {
+  padding: 0;
+  border-radius: 3rem;
+  background: color($colors, light);
+  box-shadow: $shadow-depth;
+  margin: 0 auto 2.8rem auto;
+  width: 70%;
+  .label {
+    margin: 2rem;
+    text-align: center;
+    color: color($colors, secondary);
+    font-size: 1.6rem;
+  }
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

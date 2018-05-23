@@ -1,0 +1,20 @@
+<ion-content padding>
+  <div class="progress-bar">
+    <div class="progress-bar__section is-active"></div>
+    <div class="progress-bar__section"></div>
+    <div class="progress-bar__section"></div>
+  </div>
+
+  <div class="header">
+    <h1 class="header__title">Que está pasando?</h1>
+  </div>
+
+  <ion-list no-lines id="type">
+    <button ion-item class="btn" id="type-btn--accident" detail-none (click)="goToNextPage('accident')">Accidente de Tránsito</button>
+    <button ion-item class="btn" id="type-btn--theft" detail-none (click)="goToNextPage('theft')">Hurto</button>
+    <button ion-item class="btn" id="type-btn--fire" detail-none (click)="goToNextPage('fire')">Incendio</button>
+    <button ion-item class="btn" id="type-btn--health" detail-none (click)="goToNextPage('accident')">Emergencia de Salud</button>
+  </ion-list>
+
+  <btn-back></btn-back>
+</ion-content>
