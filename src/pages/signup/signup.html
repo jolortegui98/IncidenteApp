@@ -1,0 +1,41 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Registrarse</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+Complete con sus datos
+	<br /> <br />
+  <ion-list>
+  	
+  <ion-item>
+    <ion-label fixed>nombre</ion-label>
+    <ion-input type="nombre" [(ngModel)]="nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>apellido</ion-label>
+    <ion-input type="apellido" [(ngModel)]="apellido"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label fixed>e-mail</ion-label>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
+  </ion-item>  
+  <ion-item>
+    <ion-label fixed>contraseña</ion-label>
+    <ion-input type="password"  [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+</ion-list>
+
+<button ion-button (click)="registro()">Registrarse</button>
+
+</ion-content>
