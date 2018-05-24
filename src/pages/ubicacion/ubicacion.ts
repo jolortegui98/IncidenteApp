@@ -1,17 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-// import { Geolocation } from '@ionic-native/geolocation';
-// import {
-//   GoogleMaps,
-//   GoogleMap,
-//   GoogleMapsEvent,
-//   GoogleMapOptions,
-//   CameraPosition,
-//   MarkerOptions,
-//   Marker
-// } from '@ionic-native/google-maps';
-import { HttpClient } from '@angular/common/http';
-import { Platform } from 'ionic-angular';
+import { AlertController, Platform } from 'ionic-angular';
+import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { Incidente } from '../../models/incidente.model';
 
@@ -20,6 +10,7 @@ import { EnviadoPage } from '../enviado/enviado';
 
 // Components
 import { BtnBackComponent } from '../../components/btn-back/btn-back';
+import { url } from '../../utils/GLOBAL';
 
 
 @Component({
@@ -28,79 +19,63 @@ import { BtnBackComponent } from '../../components/btn-back/btn-back';
 })
 export class UbicacionPage {
   // Var
-  public incidente: Incidente;
-  public headers;
-  // map: GoogleMap;
-
+  private tipoIncidente;
+  private detalleTipo;
+  public ubicacion;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    // private platform: Platform,
-    // private geolocation: Geolocation,
-    private http: HttpClient
-  ) {
-    // platform.ready().then(() => {
-
-    //   // get current position
-    //   geolocation.getCurrentPosition().then(pos => {
-    //     console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
-    //   });
-
-    //   const watch = geolocation.watchPosition().subscribe(pos => {
-    //     console.log('lat: ' + pos.coords.latitude + ', lon: ' + pos.coords.longitude);
-    //   });
-
-    //   // to stop watching
-    //   watch.unsubscribe();
-
-    // });
-  }
+    private http: Http,
+    private alertCtrl: AlertController,
+  ) { this.ubicacion = '0a987sd9f07' }
 
   ionViewDidLoad() {
-    // this.loadMap();
+    // Capture data of the previous page
+    this.tipoIncidente = this.navParams.get('tipoIncidente');
+    this.detalleTipo = this.navParams.get('detalleTipo');
+    // Debug only
+    // console.log(this.tipoIncidente);
+    // console.log(this.detalleTipo);
   }
 
-  // loadMap() {
-  //   let mapOptions: GoogleMapOptions = {
-  //     camera: {
-  //       target: {
-  //         lat: pos.coords.latitude,
-  //         lng: -89.3809802
-  //       },
-  //       zoom: 18,
-  //       tilt: 30
-  //     }
-  //   };
+  enviarIncidente() {
+    /*
+    let headers = new Headers();
+    headers.append('Accept', 'application/json');
+    headers.append('Content-Type', 'application/json');
+    let options = new RequestOptions({ headers });
+    const token = '53982760cc59668fc27333ed245fe1894658471a';
+    */
+    // datos a enviar desde el form
+    const json = {
+      tipo_incidente: this.tipoIncidente,
+      descripcion: this.detalleTipo,
+      ubicacion: this.ubicacion,
+      estado: 1
+    }
+    console.log(json);
+    /*
+    this.http.post(`${url}send/${token}`, json, options)
+      .subscribe(data => {
+        console.log(data['_body']);
+        let data_resp = data.json();
 
-  //   this.map = GoogleMaps.create('map_canvas', mapOptions);
+        if (data_resp.error) {
+          this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: data_resp.mensaje,
+            buttons: ['OK']
+          }).present();
+        }
 
-  //   // Wait the MAP_READY before using any methods.
-  //   this.map.one(GoogleMapsEvent.MAP_READY)
-  //     .then(() => {
-  //       console.log('Map is ready!');
-
-  //       // Now you can use all methods safely.
-  //       this.map.addMarker({
-  //         title: 'Ionic',
-  //         icon: 'blue',
-  //         animation: 'DROP',
-  //         position: {
-  //           lat: 43.0741904,
-  //           lng: -89.3809802
-  //         }
-  //       })
-  //         .then(marker => {
-  //           marker.on(GoogleMapsEvent.MARKER_CLICK)
-  //             .subscribe(() => {
-  //               alert('clicked');
-  //             });
-  //         });
-
-  //     });
-  // }
-
-  goToNextPage() {
-    this.navCtrl.push(EnviadoPage);
+        else {
+          this.navCtrl.push(EnviadoPage, {});
+          console.log(data_resp);
+        }
+      }, error => {
+        console.log(error); // Error getting the data
+      });
+      */
   }
 }
