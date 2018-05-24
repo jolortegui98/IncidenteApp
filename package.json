@@ -54,7 +54,8 @@
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
-      "mx.ferreyra.callnumber": {}
+      "mx.ferreyra.callnumber": {},
+      "cordova-plugin-network-information": {}
     },
     "platforms": [
       "android"
