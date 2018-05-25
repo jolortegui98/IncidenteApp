@@ -25,7 +25,6 @@ export class UbicacionPage {
   private tipoIncidente;
   private detalleTipo;
   public ubicacion;
-  // storage post
   public token;
 
   constructor(
@@ -36,7 +35,7 @@ export class UbicacionPage {
     private storage: Storage
   ) { this.ubicacion = '0a987sd9f07';
 
-    // storage post | get the token from localstorage
+    // get the token from localstorage
       storage.get('token').then((token) => {
         this.token = token;
       });
@@ -65,7 +64,6 @@ export class UbicacionPage {
       estado: 1
     }
 
-    // storage post
     this.http.post(`${url}/test/send/`+this.token, json, options)
       .subscribe(data => {
         console.log(data['_body']);

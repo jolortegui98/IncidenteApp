@@ -14,6 +14,7 @@ import { UbicacionPage } from '../pages/ubicacion/ubicacion';
 import { EnviadoPage } from '../pages/enviado/enviado';
 import { DetalleTipoPage } from '../pages/detalle-tipo/detalle-tipo';
 import { BtnBackComponent } from '../components/btn-back/btn-back';
+import { ForgotPage } from '../pages/forgot/forgot';
 
 // importacion de libreria para uso de protocolo HTTP
 import { HttpModule } from '@angular/http';
@@ -40,7 +41,8 @@ import { NetworkProvider } from '../providers/network/network';
     DetalleTipoPage,
     UbicacionPage,
     EnviadoPage,
-    BtnBackComponent
+    BtnBackComponent,
+    ForgotPage
   ],
   imports: [
     BrowserModule,
@@ -60,7 +62,8 @@ import { NetworkProvider } from '../providers/network/network';
     TipoPage,
     DetalleTipoPage,
     UbicacionPage,
-    EnviadoPage
+    EnviadoPage,
+    ForgotPage
   ],
   providers: [
     StatusBar,
