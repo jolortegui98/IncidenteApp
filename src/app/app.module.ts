@@ -24,7 +24,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // storage
 import { IonicStorageModule } from '@ionic/storage';
+// callNumber
 import { CallNumber } from '@ionic-native/call-number';
+// network
+import { Network } from '@ionic-native/network';
+import { NetworkProvider } from '../providers/network/network';
 
 @NgModule({
   declarations: [
@@ -62,7 +66,9 @@ import { CallNumber } from '@ionic-native/call-number';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CallNumber
+    CallNumber,
+    Network,
+    NetworkProvider
   ]
 })
 export class AppModule {}

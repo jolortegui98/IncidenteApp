@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { url } from './../../utils/GLOBAL';
 
 // importar alerta de ionic
 import { AlertController, Platform } from 'ionic-angular';
@@ -10,10 +11,12 @@ import { SignupPage } from '../signup/signup';
 // plugin storage
 import { Storage } from '@ionic/storage';
 import { InicioPage } from '../inicio/inicio';
+import { NetworkProvider } from '../../providers/network/network';
 
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html',
+  providers: [NetworkProvider]
 })
 
 export class SigninPage {
@@ -31,18 +34,9 @@ export class SigninPage {
     public http: Http,
     private alertCtrl: AlertController,
     private platform: Platform,
-    private storage: Storage
-  ) {
-
-    // Ver si jose puede hacer funcionar toda la logica de esta app dentro de app.component
-    /*storage.ready().then(() => storage.get('token')).then((token) => {
-      if(this.token){
-          this.rootPage = InicioPage;
-        }
-    });
-    */
-
-}
+    private storage: Storage,
+    private networkProvider: NetworkProvider
+  ) {}
 
   ingresar() {
     let headers = new Headers();
@@ -56,7 +50,7 @@ export class SigninPage {
       password: this.password
     }
 
-    this.http.post('http://incidentespy.info/core/api.php/login', json, options)
+    this.http.post(`${url}login`, json, options)
       .subscribe(data => {
         console.log(data['_body']);
         let data_resp = data.json();

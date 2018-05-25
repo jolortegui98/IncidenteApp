@@ -13,7 +13,7 @@ import { BtnBackComponent } from '../../components/btn-back/btn-back';
 })
 export class DetalleTipoPage {
 
-  tipoIncidente: any;
+  private tipoIncidente;
   public detalleTipo;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -25,7 +25,7 @@ export class DetalleTipoPage {
     };
   }
 
-  ngOnInit() {
+  ionViewDidLoad() {
     // Capture data of the previous page
     this.tipoIncidente = this.navParams.get('tipoIncidente');
     // Debug only
@@ -33,11 +33,11 @@ export class DetalleTipoPage {
   }
 
   // Push new data and go to the other page
-  goToNextPage(gravedadIncidente) {
+  goToNextPage() {
     console.log(this.detalleTipo);
     this.navCtrl.push(UbicacionPage, {
       tipoIncidente: this.tipoIncidente,
-      gravedadIncidente
+      detalleTipo: this.detalleTipo
     });
   }
 }

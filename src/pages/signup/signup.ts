@@ -2,7 +2,7 @@ import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { url } from './../../components/GLOBAL';
+import { url } from './../../utils/GLOBAL';
 
 // importar alerta de ionic
 import { AlertController } from 'ionic-angular';
