@@ -32,7 +32,17 @@ export class SigninPage {
     private alertCtrl: AlertController,
     private platform: Platform,
     private storage: Storage
-  ) {}
+  ) {
+
+    // Ver si jose puede hacer funcionar toda la logica de esta app dentro de app.component
+    /*storage.ready().then(() => storage.get('token')).then((token) => {
+      if(this.token){
+          this.rootPage = InicioPage;
+        }
+    });
+    */
+
+}
 
   ingresar() {
     let headers = new Headers();
