@@ -29,6 +29,8 @@ import { CallNumber } from '@ionic-native/call-number';
 // network
 import { Network } from '@ionic-native/network';
 import { NetworkProvider } from '../providers/network/network';
+// geolocation
+import { Geolocation } from '@ionic-native/geolocation';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,8 @@ import { NetworkProvider } from '../providers/network/network';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CallNumber,
     Network,
-    NetworkProvider
+    NetworkProvider,
+    Geolocation
   ]
 })
 export class AppModule {}

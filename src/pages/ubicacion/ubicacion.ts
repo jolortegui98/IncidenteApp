@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { AlertController, Platform } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
+import { Geolocation } from '@ionic-native/geolocation';
 
 // Models
 import { Incidente } from '../../models/incidente.model';
@@ -32,9 +33,23 @@ export class UbicacionPage {
     private http: Http,
     private alertCtrl: AlertController,
     private storage: Storage,
-    private platform: Platform
+    private platform: Platform,
+    private geolocation: Geolocation
   ) {
-      this.ubicacion = '0a987sd9f07';
+      this.geolocation.getCurrentPosition().then((resp) => {
+        // resp.coords.latitude
+        // resp.coords.longitude
+        this.ubicacion = `${resp.coords.latitude},${resp.coords.longitude}`
+      }).catch((error) => {
+        console.log('Error getting location', error);
+      });
+
+      let watch = this.geolocation.watchPosition();
+      watch.subscribe((data) => {
+        // data can be a set of coordinates, or an error (if an error occurred).
+        // data.coords.latitude
+        // data.coords.longitude
+      });
     }
 
   ionViewDidLoad() {
