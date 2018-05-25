@@ -50,7 +50,7 @@ export class SigninPage {
       password: this.password
     }
 
-    this.http.post(`${URL}login`, json, options)
+    this.http.post(`${URL}/login`, json, options)
       .subscribe(data => {
         console.log(data['_body']);
         let data_resp = data.json();

@@ -47,7 +47,7 @@ export class SignupPage {
       password: this.password
     }
 
-    this.http.post(`${URL}login/registro`, json, options)
+    this.http.post(`${URL}/login/registro`, json, options)
       .subscribe(data => {
         console.log(data['_body']);
         let data_resp = data.json();

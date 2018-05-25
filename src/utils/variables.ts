@@ -1,1 +1,1 @@
-export const URL = "http://incidentespy.info/core/api.php/";
+export const URL = "http://incidentespy.info/core/api.php";
