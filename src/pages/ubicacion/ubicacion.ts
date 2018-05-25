@@ -34,7 +34,13 @@ export class UbicacionPage {
     private http: Http,
     private alertCtrl: AlertController,
     private storage: Storage
-  ) { this.ubicacion = '0a987sd9f07';}
+  ) { this.ubicacion = '0a987sd9f07';
+
+    // storage post | get the token from localstorage
+      storage.get('token').then((token) => {
+        this.token = token;
+      });
+    }
 
   ionViewDidLoad() {
     // Capture data of the previous page
