@@ -12,6 +12,11 @@ import { AlertController } from 'ionic-angular';
   templateUrl: 'forgot.html',
 })
 export class ForgotPage {
+  // definicion de variables
+  public email: string;
+  public password1: string;
+  public password2: string;
+
 
   // injecciones de modulos
   constructor(
@@ -19,6 +24,10 @@ export class ForgotPage {
     public http: Http,
     private alertCtrl: AlertController
   ) {}
+
+  forgot(){
+    console.log("Muestra forgot");
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ForgotPage');

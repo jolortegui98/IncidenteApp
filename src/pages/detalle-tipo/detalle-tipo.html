@@ -9,7 +9,7 @@
     <h1 class="header__title">Describa el escenario</h1>
   </div>
 
-  <!-- Si es accidente -->
+  <!-- if accident -->
   <ion-list *ngIf="tipoIncidente === 'accident'" no-lines id="type">
     <ion-item>
       <ion-label>Persona/s atrapados/as</ion-label>
@@ -32,35 +32,84 @@
     </ion-item>
   </ion-list>
 
-  <!-- Si es Hurto -->
+  <!-- if theft -->
   <ion-list *ngIf="tipoIncidente === 'theft'" no-lines id="type">
-    <button ion-item class="btn" id="type-btn--accident" detail-none (click)="gravedadIncidente = 'accident'">Hurto</button>
-    <button ion-item class="btn" id="type-btn--theft" detail-none (click)="gravedadIncidente = 'theft'">Hurto</button>
-    <button ion-item class="btn" id="type-btn--fire" detail-none (click)="gravedadIncidente = 'fire'">Hurto</button>
-    <button ion-item class="btn" id="type-btn--health" detail-none (click)="gravedadIncidente = 'health'">Hurto</button>
+    <ion-item>
+      <ion-label>Persona/s atrapados/as</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.atrapados"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Persona/s heridos/as</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.heridos"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hay niños</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.ninhos"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>El autor del hecho escapó</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.autor"></ion-checkbox>
+    </ion-item>
   </ion-list>
 
-  <!-- Si es Incendio -->
+
+  <!-- if fire -->
   <ion-list *ngIf="tipoIncidente === 'fire'" no-lines id="type">
-    <button ion-item class="btn" id="type-btn--accident" detail-none (click)="gravedadIncidente = 'accident'">Incendio</button>
-    <button ion-item class="btn" id="type-btn--theft" detail-none (click)="gravedadIncidente = 'theft'">Incendio</button>
-    <button ion-item class="btn" id="type-btn--fire" detail-none (click)="gravedadIncidente = 'fire'">Incendio</button>
-    <button ion-item class="btn" id="type-btn--health" detail-none (click)="gravedadIncidente = 'health'">Incendio</button>
+    <ion-item>
+      <ion-label>Persona/s atrapados/as</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.atrapados"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Persona/s heridos/as</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.heridos"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hay niños</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.ninhos"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>El autor del hecho escapó</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.autor"></ion-checkbox>
+    </ion-item>
   </ion-list>
 
-  <!-- Si es Emergencia de Salud -->
+
+  <!-- if health emergency -->
   <ion-list *ngIf="tipoIncidente === 'health'" no-lines id="type">
-    <button ion-item class="btn" id="type-btn--accident" detail-none (click)="gravedadIncidente = 'accident'">Emergencia de Salud</button>
-    <button ion-item class="btn" id="type-btn--theft" detail-none (click)="gravedadIncidente = 'theft'">Emergencia de Salud</button>
-    <button ion-item class="btn" id="type-btn--fire" detail-none (click)="gravedadIncidente = 'fire'">Emergencia de Salud</button>
-    <button ion-item class="btn" id="type-btn--health" detail-none (click)="gravedadIncidente = 'health'">Emergencia de Salud</button>
+    <ion-item>
+      <ion-label>Persona/s atrapados/as</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.atrapados"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Persona/s heridos/as</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.heridos"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Hay niños</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.ninhos"></ion-checkbox>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>El autor del hecho escapó</ion-label>
+      <ion-checkbox [(ngModel)]="detalleTipo.autor"></ion-checkbox>
+    </ion-item>
   </ion-list>
 
+  <!-- go to next page -->
   <ion-fab right bottom (click)="goToNextPage(gravedadIncidente)">
     <button ion-fab color="detail">
       <ion-icon name="ios-arrow-round-forward"></ion-icon>
     </button>
   </ion-fab>
 
+  <!-- go back -->
   <btn-back></btn-back>
 </ion-content>

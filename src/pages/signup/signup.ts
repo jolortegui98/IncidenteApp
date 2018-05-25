@@ -2,7 +2,7 @@ import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { url } from './../../utils/GLOBAL';
+import { URL } from './../../utils/variables';
 
 // importar alerta de ionic
 import { AlertController } from 'ionic-angular';
@@ -47,7 +47,7 @@ export class SignupPage {
       password: this.password
     }
 
-    this.http.post(`${url}login/registro`, json, options)
+    this.http.post(`${URL}/login/registro`, json, options)
       .subscribe(data => {
         console.log(data['_body']);
         let data_resp = data.json();

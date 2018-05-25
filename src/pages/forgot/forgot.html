@@ -9,14 +9,15 @@
       <input type="email" [(ngModel)]="email" placeholder="Correo">
     </div>
     <div class="form-group__input">
-      <input type="password" [(ngModel)]="password" placeholder="Contraseña">
+      <input type="password" [(ngModel)]="password1" placeholder="Contraseña">
     </div>
-
-    
+    <div class="form-group__input">
+      <input type="password" [(ngModel)]="password2" placeholder="Repetir Contraseña">
+    </div>
   </div>
 
   <!-- Buttons -->
-  <button ion-item margin-top class="btn" detail-none (click)="ingresar()" [disabled]="password?.length < 7">
+  <button ion-item margin-top class="btn" detail-none (click)="forgot()" [disabled]="password2?.length < 7">
     <ion-icon margin-right name="log-in"></ion-icon>Ingresar
   </button>
 </ion-content>
