@@ -1,18 +1,20 @@
 <ion-content padding>
   <div class="header">
-    <h1 class="header__title">Cambia pass</h1>
+    <h1 class="header__title">Completa los datos</h1>
   </div>
 
   <!-- Inputs -->
   <div class="form-group">
+  	<p>Su email:</p>
     <div class="form-group__input">
       <input type="email" [(ngModel)]="email" placeholder="Correo">
     </div>
+    <p>Repita email:</p>
     <div class="form-group__input">
-      <input type="password" [(ngModel)]="password1" placeholder="Contraseña">
+      <input type="password" [(ngModel)]="password1" placeholder="Nueva Contraseña">
     </div>
     <div class="form-group__input">
-      <input type="password" [(ngModel)]="password2" placeholder="Repetir Contraseña">
+      <input type="password" [(ngModel)]="password2" placeholder="Nueva Contraseña">
     </div>
   </div>
 
