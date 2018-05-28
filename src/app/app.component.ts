@@ -4,19 +4,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { SigninPage } from '../pages/signin/signin';
+import { InicioPage } from '../pages/inicio/inicio';
 
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp {
-  rootPage:any = SigninPage;
+  rootPage:any = !localStorage.getItem('token') ? SigninPage : InicioPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
         statusBar.styleDefault();
         splashScreen.hide();
-    });  
+    });
   }
 }
 
