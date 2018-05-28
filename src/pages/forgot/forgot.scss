@@ -1,0 +1,27 @@
+page-forgot {
+  .form-group {
+    width: 100%;
+    &__input {
+      margin-top: 1rem;
+      text-align: center;
+      input {
+        width: 90%;
+        border: none;
+        background: map-get($colors, light );
+        padding: 1.2rem 2rem;
+        box-sizing: border-box;
+        border-radius: .875rem;
+        background-image: none;
+        color: map-get($colors, title);
+      }
+    }
+  }
+
+  .btn {
+    background: map-get($colors, primary );
+    .label {
+      color: map-get($colors, light) !important;
+    }
+  }
+
+}

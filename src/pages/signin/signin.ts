@@ -7,6 +7,7 @@ import { URL } from './../../utils/variables';
 // importar alerta de ionic
 import { AlertController, Platform } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
+import { ForgotPage } from '../forgot/forgot';
 
 // plugin storage
 import { Storage } from '@ionic/storage';
@@ -107,6 +108,10 @@ export class SigninPage {
 
   saltar() {
     this.navCtrl.push(SignupPage, {});
+  }
+
+  forgot() {
+    this.navCtrl.push(ForgotPage, {});
   }
 
   ionViewDidLoad() {}
