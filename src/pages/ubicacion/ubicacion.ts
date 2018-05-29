@@ -57,19 +57,20 @@ export class UbicacionPage {
     this.tipoIncidente = this.navParams.get('tipoIncidente');
     this.detalleTipo = this.navParams.get('detalleTipo');
 
+    // get token from storage
+    if (this.platform.is('cordova')) {
+      this.storage.get('token').then( token => { this.token = token } );
+    } else {
+      this.token = localStorage.getItem('token');
+    }
+    console.log(this.token);
+
     // Debug only
     // console.log(this.tipoIncidente);
     // console.log(this.detalleTipo);
   }
 
   enviarIncidente() {
-    // get token from storage
-    this.platform.is('cordova')
-    ?
-      this.token = this.storage.get('token')
-    :
-      this.token = localStorage.getItem('token');
-
     // prepare Headers to post
     let headers = new Headers();
     headers.append('Accept', 'application/json');
@@ -90,17 +91,17 @@ export class UbicacionPage {
         const data_resp = data.json();
 
         // handling response
-        data_resp.error
-        ?
+        if (data_resp.error) {
           // if some error
           this.alertCtrl.create({
             title: 'Error!',
             subTitle: data_resp.mensaje,
             buttons: ['OK']
           }).present()
-        :
+        } else {
           // if all ok
           this.navCtrl.push(EnviadoPage);
+        }
 
       }, error => {
         console.log(error); // Error getting the data
