@@ -12,12 +12,12 @@ import { ForgotPage } from '../forgot/forgot';
 // plugin storage
 import { Storage } from '@ionic/storage';
 import { InicioPage } from '../inicio/inicio';
-import { NetworkProvider } from '../../providers/network/network';
+import { ConnectivityService } from '../../providers/network/connectivity-service';
 
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html',
-  providers: [NetworkProvider]
+  providers: [ConnectivityService]
 })
 
 export class SigninPage {
@@ -36,7 +36,7 @@ export class SigninPage {
     private alertCtrl: AlertController,
     private platform: Platform,
     private storage: Storage,
-    private networkProvider: NetworkProvider
+    private connectivityService: ConnectivityService
   ) {}
 
   ingresar() {
@@ -55,8 +55,6 @@ export class SigninPage {
       .subscribe(data => {
         console.log(data['_body']);
         let data_resp = data.json();
-
-        //console.log(data_resp);
         // si se produce un error
         if (data_resp.error) {
           this.alertCtrl.create({
@@ -68,24 +66,14 @@ export class SigninPage {
           // almacena token e id_usuario
           this.token = data_resp.token;
           this.id_usuario = data_resp.id_usuario;
-          // crea un alert - No se muestra por que el usuario existe.
-          /*
-          this.alertCtrl.create({
-            title: 'Exito.',
-            subTitle: data_resp.mensaje,
-            buttons: ['OK']
-          }).present();
-          */
           this.navCtrl.push(InicioPage, {});
-          console.log(data_resp);
-
           // guardar storage
           this.guardar_storage();
         }
       }, error => {
-        console.log(error); // Error getting the data
+        this.connectivityService.offline();
       });
-  }
+}
 
   guardar_storage() {
     if (this.platform.is('cordova')) {
@@ -115,5 +103,5 @@ export class SigninPage {
   }
 
   ionViewDidLoad() {}
-
+  
 }

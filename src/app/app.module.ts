@@ -29,7 +29,8 @@ import { IonicStorageModule } from '@ionic/storage';
 import { CallNumber } from '@ionic-native/call-number';
 // network
 import { Network } from '@ionic-native/network';
-import { NetworkProvider } from '../providers/network/network';
+import { ConnectivityService } from '../providers/network/connectivity-service';
+
 // geolocation
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -73,7 +74,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CallNumber,
     Network,
-    NetworkProvider,
+    ConnectivityService,
     Geolocation
   ]
 })

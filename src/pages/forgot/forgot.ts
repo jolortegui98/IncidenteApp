@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { URL } from './../../utils/variables';
+//import { ConnectivityService  } from '../../providers/network/connectivity-service';
 
 // importar alerta de ionic
 import { AlertController, Platform } from 'ionic-angular';
@@ -15,7 +16,8 @@ import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-forgot',
-  templateUrl: 'forgot.html',
+  templateUrl: 'forgot.html'
+  //,providers: [ConnectivityService]
 })
 export class ForgotPage {
   // definicion de variables
@@ -28,9 +30,10 @@ export class ForgotPage {
   constructor(
     public navCtrl: NavController,
     public http: Http,
-    private alertCtrl: AlertController,
-    private platform: Platform,
-    private storage: Storage
+    public alertCtrl: AlertController,
+    public platform: Platform,
+    public storage: Storage //,public connectivityService: ConnectivityService
+    
   ) {}
 
   forgot(){
@@ -54,9 +57,7 @@ export class ForgotPage {
         password2: this.password2
       }
 
-      // post to the api 
       this.http.post(`${URL}/login/reset/${this.token}`, json, options)
-      //this.http.post("http://localhost/IONIC/rest/index.php/login/reset/72c931bcdede01f4b5ef55a9a4f40405e3d516cb", json, options)
       .subscribe(data => {
         console.log(data['_body']);
         let data_resp = data.json();
