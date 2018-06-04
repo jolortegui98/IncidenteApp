@@ -18,10 +18,10 @@ export class DetalleTipoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.detalleTipo = {
-      atrapados: false,
-      heridos  : false,
-      ninhos   : false,
-      autor    : false
+      op1: false,
+      op2: false,
+      op3: false,
+      op4: false
     };
   }
 

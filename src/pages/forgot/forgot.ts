@@ -33,8 +33,11 @@ export class ForgotPage {
     public alertCtrl: AlertController,
     public platform: Platform,
     public storage: Storage //,public connectivityService: ConnectivityService
-    
   ) {}
+
+  isValidForm() {
+    return this.password1 != this.password2 ? false : true;
+  }
 
   forgot(){
       // get token from storage
@@ -80,5 +83,5 @@ export class ForgotPage {
       }, error => {
         console.log(error); // Error getting the data
       });
-  } 
+  }
 }

@@ -1,14 +1,23 @@
-<ion-content padding >
+<ion-content padding>
   <div class="header">
     <h1 class="header__title">Incidente</h1>
-    <button ion-button clear round padding no-margin (click)="call()">
-      <ion-icon name="call"></ion-icon>
-    </button>
+    <div class="header__buttons">
+      <button ion-button clear round padding no-margin>
+        <ion-icon name="pie"></ion-icon>
+      </button>
+      <button ion-button clear round padding no-margin>
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </div>
   </div>
 
   <div class="slider">
     <input type="range" class="slider__input" value="0" max="100" [(ngModel)]="range" (change)="onChange(range)">
   </div>
+
+  <button ion-button no-margin (click)="call()" class="btn">
+    <ion-icon margin-right name="call"></ion-icon> Llamar al 911
+  </button>
 
   <div class="footer">
     <h4 class="footer__title">Tips</h4>
