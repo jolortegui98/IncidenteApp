@@ -15,6 +15,7 @@ import { EnviadoPage } from '../pages/enviado/enviado';
 import { DetalleTipoPage } from '../pages/detalle-tipo/detalle-tipo';
 import { BtnBackComponent } from '../components/btn-back/btn-back';
 import { ForgotPage } from '../pages/forgot/forgot';
+import { DetailsPage } from '../pages/details/details';
 
 // importacion de libreria para uso de protocolo HTTP
 import { HttpModule } from '@angular/http';
@@ -31,8 +32,17 @@ import { CallNumber } from '@ionic-native/call-number';
 import { Network } from '@ionic-native/network';
 import { ConnectivityService } from '../providers/network/connectivity-service';
 
+// diagnostic y open native
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { OpenNativeSettings } from '@ionic-native/open-native-settings';
+
 // geolocation
 import { Geolocation } from '@ionic-native/geolocation';
+
+// imports de camara
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 @NgModule({
   declarations: [
@@ -45,7 +55,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     UbicacionPage,
     EnviadoPage,
     BtnBackComponent,
-    ForgotPage
+    ForgotPage,
+    DetailsPage
   ],
   imports: [
     BrowserModule,
@@ -66,7 +77,8 @@ import { Geolocation } from '@ionic-native/geolocation';
     DetalleTipoPage,
     UbicacionPage,
     EnviadoPage,
-    ForgotPage
+    ForgotPage,
+    DetailsPage
   ],
   providers: [
     StatusBar,
@@ -75,7 +87,12 @@ import { Geolocation } from '@ionic-native/geolocation';
     CallNumber,
     Network,
     ConnectivityService,
-    Geolocation
+    Diagnostic,
+    OpenNativeSettings,
+    Geolocation,
+    Camera, 
+    FileTransfer,
+    File
   ]
 })
 export class AppModule {}

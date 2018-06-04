@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 import { InicioPage } from '../inicio/inicio';
-
+// import de pagina Detalle
+import { DetailsPage } from '../details/details';
 
 @Component({
   selector: 'page-enviado',
@@ -26,4 +27,11 @@ export class EnviadoPage {
   goToNextPage() {
     this.navCtrl.popToRoot();
   }
+
+  /* Implementacion del Domingo 04-06-28*/ 
+  moreDetails(){
+    this.navCtrl.push(DetailsPage);
+  }
+  /* Implementacion del Domingo 04-06-28*/ 
+
 }

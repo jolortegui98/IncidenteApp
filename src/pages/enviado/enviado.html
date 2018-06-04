@@ -1,12 +1,13 @@
 <ion-content padding>
-  <div class="header">
-    <h1 class="header__title--finish">Tu denuncia ha sido enviada</h1>
-    <p class="header__description">Puedes esperar a que se comuniquen contigo o:</p>
-  </div>
+    <div class="header">
+        <h1 class="header__title--finish">Tu denuncia ha sido enviada</h1>
+        <p class="header__description">Puedes esperar a que se comuniquen contigo o:</p>
+    </div>
 
-  <ion-list no-lines id="type">
-    <button ion-item class="btn" id="type-btn--call" detail-none (click)="call()"><ion-icon margin-right name="call"></ion-icon>Llamar al 911</button>
-    <button ion-item class="btn" id="type-btn--home" detail-none (click)="goToNextPage('theft')"><ion-icon margin-right name="home"></ion-icon>Ir al Inicio</button>
-  </ion-list>
+    <ion-list no-lines id="type">
+        <button ion-item class="btn" id="type-btn--call" detail-none (click)="call()"><ion-icon margin-right name="call"></ion-icon>Llamar al 911</button>
+        <button ion-item class="btn" id="type-btn--home" detail-none (click)="goToNextPage('theft')"><ion-icon margin-right name="home"></ion-icon>Ir al Inicio</button>
+        <button ion-item class="btn" id="type-btn--call" detail-none (click)="moreDetails()"><ion-icon margin-right name="details"></ion-icon>Tenes mas detalles?</button>
+    </ion-list>
 
 </ion-content>

@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Incidente Detalle
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <button ion-button (click)="takePhoto()" full color="primary">Tomar foto</button>
+    <p align="center"><img src="{{ myphoto }}"></p>
+    <ion-item>
+        <ion-label color="primary" fixed>Comentario</ion-label>
+        <ion-input type="text" [(ngModel)]="comentario"></ion-input>
+    </ion-item>
+    <br/>
+    <button ion-button (click)="uploadImage()" full color="dark">Actualizar incidente</button>
+</ion-content>

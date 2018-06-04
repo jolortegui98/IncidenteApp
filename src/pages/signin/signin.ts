@@ -14,6 +14,10 @@ import { Storage } from '@ionic/storage';
 import { InicioPage } from '../inicio/inicio';
 import { ConnectivityService } from '../../providers/network/connectivity-service';
 
+// Por momentos para no ir hasta detalle
+// import de pagina Detalle
+import { DetailsPage } from '../details/details';
+
 @Component({
   selector: 'page-signin',
   templateUrl: 'signin.html',
@@ -103,5 +107,10 @@ export class SigninPage {
   }
 
   ionViewDidLoad() {}
+
+  moreDetails(){
+    this.navCtrl.push(DetailsPage);
+  }
+  
   
 }
