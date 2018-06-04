@@ -1,0 +1,26 @@
+1
+ionic cordova plugin add cordova-open-native-settings
+npm install --save @ionic-native/open-native-settings
+
+2
+ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
+npm install --save @ionic-native/geolocation
+
+3
+ionic cordova plugin add cordova.plugins.diagnostic
+npm install --save @ionic-native/diagnostic
+
+4
+npm install @types/google-maps --save
+
+5
+ionic cordova plugin add cordova-plugin-camera
+npm install --save @ionic-native/camera
+
+6- 
+ionic cordova plugin add cordova-plugin-file-transfer
+npm install --save @ionic-native/file-transfer
+
+7-
+ionic cordova plugin add cordova-plugin-file
+npm install --save @ionic-native/file
