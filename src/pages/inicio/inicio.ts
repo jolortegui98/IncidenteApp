@@ -4,6 +4,7 @@ import { CallNumber } from '@ionic-native/call-number';
 
 // Next Page
 import { TipoPage } from '../tipo/tipo';
+import { SigninPage } from '../signin/signin';
 
 @Component({
   selector: 'page-inicio',
@@ -40,6 +41,10 @@ export class InicioPage {
     this.callNumber.callNumber(this.phoneNumber, true)
       .then(() => console.log('Launched dialer!'))
       .catch(() => console.log('Error launching dialer'));
+  }
+
+  cerrar(){
+    this.navCtrl.push(SigninPage);
   }
   
 }
