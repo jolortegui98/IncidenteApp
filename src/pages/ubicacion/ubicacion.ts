@@ -9,7 +9,6 @@ import { Incidente } from '../../models/incidente.model';
 
 // Components
 import { EnviadoPage } from '../enviado/enviado';
-import { BtnBackComponent } from '../../components/btn-back/btn-back';
 import { URL } from '../../utils/variables';
 
 // storage post

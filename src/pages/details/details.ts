@@ -3,22 +3,39 @@ import { NavController, NavParams } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { File } from '@ionic-native/file';
 import { InicioPage } from '../inicio/inicio';
+import { Http, Headers, RequestOptions } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { ConnectivityService } from '../../providers/network/connectivity-service';
+import { AlertController, Platform } from 'ionic-angular';
+import { URL } from './../../utils/variables';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-details',
   templateUrl: 'details.html',
+  providers: [ConnectivityService]
 })
 
 export class DetailsPage {
   myphoto:any;
   comentario: string;
   fileNameSend: string;
+  public token;
 
   constructor(public navParams: NavParams, public navCtrl: NavController, private camera: Camera, 
-    private transfer: FileTransfer, private file: File, 
-    private loadingCtrl: LoadingController) {
+    private transfer: FileTransfer, private loadingCtrl: LoadingController, public http: Http,
+    private alertCtrl: AlertController, private storage: Storage, private platform: Platform,
+    private connectivityService: ConnectivityService) {}
+
+  ionViewDidLoad() {
+    // get token from storage
+    if (this.platform.is('cordova')) {
+      this.storage.get('token').then( token => { this.token = token } );
+    } else {
+      this.token = localStorage.getItem('token');
+    }
+    console.log(this.token);
   }
 
   takePhoto(){
@@ -68,9 +85,9 @@ export class DetailsPage {
     fileTransfer.upload(this.myphoto, 'http://incidentespy.info/core/uploads/uploadPhoto.php', options)
       .then((data) => {
         alert("Incidente Actualizado!");
-        //this.actualizarIncidente(fileNameSend, this.comentario);
+        this.actualizarIncidente(options.fileName, this.comentario);
         loader.dismiss();
-        //this.navCtrl.push(InicioPage);
+        this.navCtrl.push(InicioPage);
       }, (err) => {
         console.log(err);
         alert("Error");
@@ -78,18 +95,35 @@ export class DetailsPage {
       });
   }
 
-  /*
-  hacer una funcion que reciba como parametro el nombre de la imagen
-   y el texto que voy a ingresar, y que cuando sea success actualize en la db
-   recibiendo esos dos parametros.
+  actualizarIncidente(nombreImagen, comentario){
+      let headers = new Headers();
+      headers.append('Accept', 'application/json');
+      headers.append('Content-Type', 'application/json');
+      let options = new RequestOptions({ headers });
   
-  updateDetalle(options.fileName, this.comentario){
-    send to db, UPDATE incidente.
-  }
-   */
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DetailsPage');
+      // datos a enviar desde el form
+      let json = {
+        comentario: nombreImagen,
+        imagen: comentario
+      }
+  
+      this.http.post(`${URL}/incidente/detail/${this.token}`, json, options)
+        .subscribe(data => {
+          console.log(data['_body']);
+          let data_resp = data.json();
+          // si se produce un error
+          if (data_resp.error) {
+            this.alertCtrl.create({
+              title: 'Error!',
+              subTitle: data_resp.mensaje,
+              buttons: ['OK']
+            }).present();
+          } else { // exito de peticion
+            console.log("exito actualizada la foto");
+          }
+        }, error => {
+          this.connectivityService.offline();
+        });
   }
 
 }

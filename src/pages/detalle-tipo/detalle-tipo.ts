@@ -4,9 +4,6 @@ import { NavController, NavParams } from 'ionic-angular';
 // Next page import
 import { UbicacionPage } from '../ubicacion/ubicacion';
 
-// Components
-import { BtnBackComponent } from '../../components/btn-back/btn-back';
-
 @Component({
   selector: 'page-detalle-tipo',
   templateUrl: 'detalle-tipo.html'

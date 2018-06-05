@@ -20,10 +20,6 @@ export class SignupPage {
   public email: string;
   public password: string;
 
-  // datos provenientes del rest
-  private token: string;
-  private id_usuario: string;
-
   // injecciones de modulos
   constructor(
     private navCtrl: NavController,
@@ -60,13 +56,7 @@ export class SignupPage {
             subTitle: data_resp.mensaje,
             buttons: ["OK"]
           }).present();
-        }
-
-        else { // exito de peticion
-          // almacena token e id_usuario
-          this.token = data_resp.token;
-          this.id_usuario = data_resp.id_usuario;
-
+        } else { // exito de peticion
           // crea un alert
           this.alertCtrl.create({
             title: "Registro exitoso",
