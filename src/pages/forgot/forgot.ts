@@ -14,32 +14,45 @@ import { SigninPage } from '../signin/signin';
 // storage post
 import { Storage } from '@ionic/storage';
 
+//forgot implementation
+import { OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl } from '@angular/forms';
+
 @Component({
   selector: 'page-forgot',
   templateUrl: 'forgot.html'
   //,providers: [ConnectivityService]
 })
-export class ForgotPage {
-  // definicion de variables
-  public email: string;
-  public password1: string;
-  public password2: string;
-  public token;
 
-  // injecciones de modulos
-  constructor(
-    public navCtrl: NavController,
-    public http: Http,
-    public alertCtrl: AlertController,
-    public platform: Platform,
-    public storage: Storage //,public connectivityService: ConnectivityService
-  ) {}
+export class ForgotPage implements OnInit {
+    // definicion de variables
+    public token;
 
-  isValidForm() {
-    return this.password1 != this.password2 ? false : true;
-  }
+    user: FormGroup;
 
-  forgot(){
+    // injecciones de modulos
+    constructor(
+      public navCtrl: NavController,
+      public http: Http,
+      public alertCtrl: AlertController,
+      public platform: Platform,
+      public storage: Storage //,public connectivityService: ConnectivityService
+    ) {}
+
+    ngOnInit() {
+        this.user = new FormGroup({
+            email: new FormControl('', [Validators.required]),
+            password: new FormControl('', [Validators.required]),
+            re_password: new FormControl('', [Validators.required, this.equalto('password')])
+        });
+    }
+
+    onSubmit(){
+      /*console.log("email "+ this.user.get('email').value);
+      console.log("p1 "+ this.user.get('password').value);
+      console.log("p2 "+ this.user.get('re_password').value);
+      */
+
       // get token from storage
         this.platform.is('cordova')
         ?
@@ -55,9 +68,9 @@ export class ForgotPage {
 
       // prepare json to post
       let json = {
-        email: this.email,
-        password1: this.password1,
-        password2: this.password2
+        email: this.user.get('email').value,
+        password1: this.user.get('password').value,
+        password2: this.user.get('re_password').value
       }
 
       this.http.post(`${URL}/login/reset/${this.token}`, json, options)
@@ -84,4 +97,25 @@ export class ForgotPage {
         console.log(error); // Error getting the data
       });
   }
+
+    equalto(field_name): ValidatorFn {
+        return (control: AbstractControl): {
+            [key: string]: any
+        } => {
+
+            let input = control.value;
+
+            let isValid = control.root.value[field_name] == input
+            if (!isValid)
+                return {
+                    'equalTo': {
+                        isValid
+                    }
+                }
+            else
+                return null;
+        };
+    }
+
+
 }

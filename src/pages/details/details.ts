@@ -14,6 +14,7 @@ import { InicioPage } from '../inicio/inicio';
 export class DetailsPage {
   myphoto:any;
   comentario: string;
+  fileNameSend: string;
 
   constructor(public navParams: NavParams, public navCtrl: NavController, private camera: Camera, 
     private transfer: FileTransfer, private file: File, 
@@ -60,12 +61,16 @@ export class DetailsPage {
       headers: {}
     }
 
+    // esta manera es la que funciona.
+    console.log("El nombre de la imagen es: "+ options.fileName);
+
     //file transfer action
     fileTransfer.upload(this.myphoto, 'http://incidentespy.info/core/uploads/uploadPhoto.php', options)
       .then((data) => {
         alert("Incidente Actualizado!");
+        //this.actualizarIncidente(fileNameSend, this.comentario);
         loader.dismiss();
-        this.navCtrl.push(InicioPage);
+        //this.navCtrl.push(InicioPage);
       }, (err) => {
         console.log(err);
         alert("Error");
@@ -79,7 +84,7 @@ export class DetailsPage {
    recibiendo esos dos parametros.
   
   updateDetalle(options.fileName, this.comentario){
-    send to db, UPDATE.
+    send to db, UPDATE incidente.
   }
    */
 

@@ -1,25 +1,68 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            Completa los datos
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
 <ion-content padding>
-  <div class="header">
-    <h1 class="header__title">Completa los datos</h1>
-  </div>
 
-  <!-- Inputs -->
-  <div class="form-group">
-  	<p>Su email:</p>
-    <div class="form-group__input">
-      <input type="email" [(ngModel)]="email" placeholder="Correo" required>
-    </div>
-    <p>Su nueva contraseña:</p>
-    <div class="form-group__input">
-      <input type="password" [(ngModel)]="password1" placeholder="Nueva contraseña" required>
-    </div>
-    <div class="form-group__input">
-      <input type="password" [(ngModel)]="password2" placeholder="Repita su nueva Contraseña" required>
-    </div>
-  </div>
+    <form novalidate (ngSubmit)="onSubmit(user)" [formGroup]="user">
 
-  <!-- Buttons -->
-  <button ion-item margin-top class="btn" detail-none (click)="forgot()" [disabled]="isValidForm()">
-    <ion-icon margin-right name="log-in"></ion-icon>Ingresar
-  </button>
+        <ion-item>
+            <ion-label>email</ion-label>
+            <ion-input type="text" value="" formControlName="email" autocomplete='off' autocorrect='off' autocapitalize='off'></ion-input>
+
+        </ion-item>
+
+        <ion-item no-lines *ngIf="(user.get('email').hasError('required') ) && user.get('email').touched">
+
+            <div class="error" *ngIf="user.get('email').hasError('required') && user.get('email').touched">
+                El email es requerido
+            </div>
+
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Password</ion-label>
+            <ion-input type="password" value="" formControlName="password" autocomplete='off' autocorrect='off' autocapitalize='off'></ion-input>
+
+        </ion-item>
+
+        <ion-item no-lines *ngIf="(user.get('password').hasError('required') ) && user.get('password').touched">
+
+            <div class="error" *ngIf="user.get('password').hasError('required') && user.get('password').touched">
+                El password es requerido
+            </div>
+
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label>Confirmar Password</ion-label>
+            <ion-input type="password" value="" formControlName="re_password" autocomplete='off' autocorrect='off' autocapitalize='off'></ion-input>
+
+        </ion-item>
+
+        <ion-item no-lines *ngIf="( user.get('re_password').hasError('equalTo') || user.get('re_password').hasError('required') ) && user.get('re_password').touched">
+
+            <div class="error" *ngIf="user.get('re_password').hasError('required') && user.get('re_password').touched">
+                El passwords de confirmacion es requerido
+            </div>
+            <div class="error" *ngIf="user.get('re_password').hasError('equalTo') && user.get('re_password').touched">
+                Los passwords no son iguales
+            </div>
+        </ion-item>
+        <br/>
+        <button ion-button [disabled]="user.invalid">Cambiar</button>
+    </form>
+
 </ion-content>
+
+
+<style type="text/css">
+    .error {
+        color: red;
+    }
+</style>
