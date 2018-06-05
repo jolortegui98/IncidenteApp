@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { URL } from './../../utils/variables';
-//import { ConnectivityService  } from '../../providers/network/connectivity-service';
+import { ConnectivityService  } from '../../providers/network/connectivity-service';
 
 // importar alerta de ionic
 import { AlertController, Platform } from 'ionic-angular';
@@ -20,8 +20,8 @@ import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl } from
 
 @Component({
   selector: 'page-forgot',
-  templateUrl: 'forgot.html'
-  //,providers: [ConnectivityService]
+  templateUrl: 'forgot.html',
+  providers: [ConnectivityService]
 })
 
 export class ForgotPage implements OnInit {
@@ -36,7 +36,8 @@ export class ForgotPage implements OnInit {
       public http: Http,
       public alertCtrl: AlertController,
       public platform: Platform,
-      public storage: Storage //,public connectivityService: ConnectivityService
+      public storage: Storage,
+      public connectivityService: ConnectivityService
     ) {}
 
     ngOnInit() {
@@ -94,7 +95,7 @@ export class ForgotPage implements OnInit {
           this.navCtrl.setRoot(this.navCtrl.getActive().component);
         }
       }, error => {
-        console.log(error); // Error getting the data
+          this.connectivityService.offline();
       });
   }
 

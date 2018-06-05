@@ -3,14 +3,13 @@ import { Component } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { URL } from './../../utils/variables';
-
-// importar alerta de ionic
+import { ConnectivityService } from '../../providers/network/connectivity-service';
 import { AlertController } from 'ionic-angular';
-
 
 @Component({
   selector: 'page-signup',
   templateUrl: 'signup.html',
+  providers: [ConnectivityService]
 })
 
 export class SignupPage {
@@ -24,7 +23,8 @@ export class SignupPage {
   constructor(
     private navCtrl: NavController,
     private http: Http,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private connectivityService: ConnectivityService
   ) {}
 
   ionViewDidLoad() {}
@@ -67,7 +67,7 @@ export class SignupPage {
           this.navCtrl.popToRoot();
         }
       }, error => {
-        console.log(error); // Error getting the data
+        this.connectivityService.offline();
       });
   }
 }

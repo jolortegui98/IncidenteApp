@@ -9,8 +9,8 @@
         <h1 class="header__title">Tu ubicacion actual</h1>
     </div>
 
-    <google-map></google-map>
+    <div #map id="map"></div>
     <br/> <br/>
-    <div align="center"><button ion-button round outline>Denunciar</button></div>
-
+    <div align="center"><button ion-button round outline (click)="enviarIncidente()">Denunciar</button></div>
+    <btn-back></btn-back>
 </ion-content>
