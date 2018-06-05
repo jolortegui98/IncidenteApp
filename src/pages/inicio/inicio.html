@@ -3,8 +3,11 @@
         <h1 class="header__title">Incidente</h1>
         <div class="header__buttons">
             <button ion-button clear round padding no-margin>
-        <ion-icon name="pie"></ion-icon>
-      </button>
+                <ion-icon name="archive"></ion-icon>
+            </button>
+            <button ion-button clear round padding no-margin>
+                <ion-icon name="pie"></ion-icon>
+            </button>
             <button ion-button clear round padding no-margin (click)="cerrar()">
         <ion-icon name="log-out"></ion-icon>
       </button>
@@ -15,16 +18,17 @@
         <input type="range" class="slider__input" value="0" max="100" [(ngModel)]="range" (change)="onChange(range)">
     </div>
 
-    <button ion-button no-margin (click)="call()" class="btn">
+    <!-- Jose, este boton no se ve bien (PT).
+        <button ion-button no-margin (click)="call()" class="btn">
     <ion-icon margin-right name="call"></ion-icon> Llamar al 911
-  </button>
+  </button>-->
 
     <div class="footer">
         <h4 class="footer__title">Tips</h4>
         <ul class="footer__list">
+            <li class="footer__list-item">Reporta un incidente avistado.</li>
+            <li class="footer__list-item">Obtené tu ubicacion actual.</li>
             <li class="footer__list-item">Toma fotos del incidente.</li>
-            <li class="footer__list-item">Obtén los datos del/los incidentados.</li>
-            <li class="footer__list-item">Espera la ayuda.</li>
         </ul>
     </div>
 </ion-content>

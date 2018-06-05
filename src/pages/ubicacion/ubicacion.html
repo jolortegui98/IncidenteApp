@@ -1,21 +1,16 @@
 <ion-content padding>
-  <div class="progress-bar">
-    <div class="progress-bar__section is-active"></div>
-    <div class="progress-bar__section is-active"></div>
-    <div class="progress-bar__section is-active"></div>
-  </div>
+    <div class="progress-bar">
+        <div class="progress-bar__section is-active"></div>
+        <div class="progress-bar__section is-active"></div>
+        <div class="progress-bar__section is-active"></div>
+    </div>
 
-  <div class="header">
-    <h1 class="header__title">En donde?</h1>
-  </div>
+    <div class="header">
+        <h1 class="header__title">Tu ubicacion actual</h1>
+    </div>
 
-  <div id="map_canvas"></div>
+    <google-map></google-map>
+    <br/> <br/>
+    <div align="center"><button ion-button round outline>Denunciar</button></div>
 
-  <ion-fab right bottom (click)="enviarIncidente()">
-    <button ion-fab color="detail">
-      <ion-icon name="ios-arrow-round-forward"></ion-icon>
-    </button>
-  </ion-fab>
-
-  <btn-back></btn-back>
 </ion-content>

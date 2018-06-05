@@ -44,6 +44,9 @@ import { Camera } from '@ionic-native/camera';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 
+// dos componentes a importar
+import { GoogleMapComponent } from '../components/google-map/google-map';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -56,7 +59,8 @@ import { File } from '@ionic-native/file';
     EnviadoPage,
     BtnBackComponent,
     ForgotPage,
-    DetailsPage
+    DetailsPage,
+    GoogleMapComponent
   ],
   imports: [
     BrowserModule,

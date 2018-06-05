@@ -1,27 +1,30 @@
 <ion-content padding>
-  Complete con sus datos
-  <br />
-  <br />
-  <ion-list>
-    <ion-item>
-      <ion-label>nombre</ion-label>
-      <ion-input type="nombre" [(ngModel)]="nombre"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>apellido</ion-label>
-      <ion-input type="apellido" [(ngModel)]="apellido"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>e-mail</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label>contraseña</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
+    Complete con sus datos
+    <br />
+    <br />
+    <ion-list>
+        <ion-item>
+            <ion-label>nombre</ion-label>
+            <ion-input type="nombre" [(ngModel)]="nombre"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>apellido</ion-label>
+            <ion-input type="apellido" [(ngModel)]="apellido"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>e-mail</ion-label>
+            <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>contraseña</ion-label>
+            <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
 
-  </ion-list>
+    </ion-list>
 
-  <button ion-button (click)="registro()">Registrarse</button>
+    <button ion-button (click)="registro()">Registrarse</button>
+
+
+    <p>La Contraseña debe ser mayor a 7 caracteres.</p>
 
 </ion-content>

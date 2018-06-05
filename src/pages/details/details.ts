@@ -84,16 +84,36 @@ export class DetailsPage {
     //file transfer action
     fileTransfer.upload(this.myphoto, 'http://incidentespy.info/core/uploads/uploadPhoto.php', options)
       .then((data) => {
-        alert("Incidente Actualizado!");
         this.actualizarIncidente(options.fileName, this.comentario);
+        this.mensajeExito().then((result) => {
+          if(result){
+            // Se redirecciona solo cuando presiona OK
+            this.navCtrl.push(InicioPage);
+          }
+        })
         loader.dismiss();
-        this.navCtrl.push(InicioPage);
+        
       }, (err) => {
         console.log(err);
         alert("Error");
         loader.dismiss();
       });
   }
+
+  mensajeExito(): Promise<boolean> {
+    return new Promise((resolve, reject) =>{
+      this.alertCtrl.create({
+      title : 'Exito!',
+      subTitle: 'El incidente ha sido actualizado.',
+      buttons: [
+        {
+        text: 'OK',
+        handler:_=> resolve(true)
+        }
+      ]
+      }).present();
+    })
+    }
 
   actualizarIncidente(nombreImagen, comentario){
       let headers = new Headers();
