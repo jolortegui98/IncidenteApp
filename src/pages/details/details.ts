@@ -10,6 +10,7 @@ import { ConnectivityService } from '../../providers/network/connectivity-servic
 import { AlertController, Platform } from 'ionic-angular';
 import { URL } from './../../utils/variables';
 import { Storage } from '@ionic/storage';
+import { Incidente } from '../../models/incidente.model';
 
 @Component({
   selector: 'page-details',
@@ -22,8 +23,9 @@ export class DetailsPage {
   comentario: string;
   fileNameSend: string;
   public token;
+  public incidente: Incidente;
 
-  constructor(public navParams: NavParams, public navCtrl: NavController, private camera: Camera, 
+  constructor(public navParams: NavParams, public navCtrl: NavController, private camera: Camera,
     private transfer: FileTransfer, private loadingCtrl: LoadingController, public http: Http,
     private alertCtrl: AlertController, private storage: Storage, private platform: Platform,
     private connectivityService: ConnectivityService) {}
@@ -36,6 +38,8 @@ export class DetailsPage {
       this.token = localStorage.getItem('token');
     }
     console.log(this.token);
+
+    this.incidente = this.navParams.get('incidente');
   }
 
   takePhoto(){
@@ -92,7 +96,7 @@ export class DetailsPage {
           }
         })
         loader.dismiss();
-        
+
       }, (err) => {
         console.log(err);
         alert("Error");
@@ -120,13 +124,13 @@ export class DetailsPage {
       headers.append('Accept', 'application/json');
       headers.append('Content-Type', 'application/json');
       let options = new RequestOptions({ headers });
-  
+
       // datos a enviar desde el form
       let json = {
         comentario: nombreImagen,
         imagen: comentario
       }
-  
+
       this.http.post(`${URL}/incidente/detail/${this.token}`, json, options)
         .subscribe(data => {
           console.log(data['_body']);

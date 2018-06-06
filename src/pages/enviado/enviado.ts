@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 // import de pagina Detalle
 import { DetailsPage } from '../details/details';
+import { Incidente } from '../../models/incidente.model';
 
 @Component({
   selector: 'page-enviado',
@@ -10,12 +11,15 @@ import { DetailsPage } from '../details/details';
 })
 export class EnviadoPage {
   public phoneNumber: string;
+  private incidente: Incidente;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public callNumber: CallNumber) {
     this.phoneNumber = '911';
   }
 
-  ionViewDidLoad() {}
+  ionViewDidLoad() {
+    this.incidente = this.navParams.get('json');
+  }
 
   call() {
     this.callNumber.callNumber(this.phoneNumber, true)
@@ -27,10 +31,10 @@ export class EnviadoPage {
     this.navCtrl.popToRoot();
   }
 
-  /* Implementacion del Domingo 04-06-28*/ 
+  /* Implementacion del Domingo 04-06-28*/
   moreDetails(){
-    this.navCtrl.push(DetailsPage);
+    this.navCtrl.push(DetailsPage, { incidente: this.incidente });
   }
-  /* Implementacion del Domingo 04-06-28*/ 
+  /* Implementacion del Domingo 04-06-28*/
 
 }
