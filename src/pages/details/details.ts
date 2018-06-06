@@ -119,7 +119,7 @@ export class DetailsPage {
     })
     }
 
-  actualizarIncidente(nombreImagen, comentario){
+  actualizarIncidente(comentario, nombreImagen){
       let headers = new Headers();
       headers.append('Accept', 'application/json');
       headers.append('Content-Type', 'application/json');
