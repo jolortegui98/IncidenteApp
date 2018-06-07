@@ -5,6 +5,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { AlertController, Platform } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { ConnectivityService } from '../../providers/network/connectivity-service';
+import { Diagnostic } from '@ionic-native/diagnostic';
 
 // Models
 import { Incidente } from '../../models/incidente.model';
@@ -41,12 +42,13 @@ export class UbicacionPage {
     private alertCtrl: AlertController,
     private storage: Storage,
     private platform: Platform,
-    private connectivityService: ConnectivityService ) {}
+    private connectivityService: ConnectivityService,
+    public diagnostic: Diagnostic) {}
 
   ngOnInit(){
     this.initializeMap();
   }
-
+      
   initializeMap() {
         //Show loading
         let loader = this.loadingCtrl.create({
@@ -74,9 +76,18 @@ export class UbicacionPage {
         this.showMyLocation();
 
     }).catch((error) => {
+      //Show loading
+      let loader = this.loadingCtrl.create({
+      content: "Cargando mapa..."
+      });
+      loader.present();
+      // lanzador de mensaje con confirmacion
+      this.mensajeReCheck();
+      this.reCheckLocation();
+      loader.dismiss();
       console.log('Error getting location', error);
     });
-}
+}  
 
       showMyLocation(){
 
@@ -98,7 +109,6 @@ export class UbicacionPage {
       }
 
       ionViewDidLoad() {
-        this.initializeMap();
         // Capture data of the previous page
         this.tipoIncidente = this.navParams.get('tipoIncidente');
         this.detalleTipo = this.navParams.get('detalleTipo');
@@ -149,4 +159,33 @@ export class UbicacionPage {
             this.connectivityService.offline();
           });
       }
+
+        reCheckLocation() {
+          this.platform.ready().then((readySource) => {
+        
+            this.diagnostic.isLocationEnabled().then(
+              (isAvailable) => {
+      
+                if(isAvailable === true){
+                  this.initializeMap();
+                }           
+                }).catch((e) => {});
+        
+          });
+        }
+
+        mensajeReCheck(): Promise<boolean> {
+          return new Promise((resolve, reject) =>{
+            this.alertCtrl.create({
+            title: 'Error!',
+            subTitle: "Conexion perdida, reintentando establecer.",
+            buttons: [
+              {
+              text: 'OK',
+              handler:_=> resolve(true)
+              }
+            ]
+            }).present();
+          })
+          }
 }
