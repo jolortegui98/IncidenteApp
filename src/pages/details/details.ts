@@ -44,10 +44,12 @@ export class DetailsPage {
 
   takePhoto(){
     const options: CameraOptions = {
-      quality: 70,
+      quality: 50,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
-      mediaType: this.camera.MediaType.PICTURE
+      mediaType: this.camera.MediaType.PICTURE,
+      saveToPhotoAlbum: true,
+      correctOrientation: true 
     }
 
     this.camera.getPicture(options).then((imageData) => {
@@ -88,7 +90,7 @@ export class DetailsPage {
     //file transfer action
     fileTransfer.upload(this.myphoto, 'http://incidentespy.info/core/uploads/uploadPhoto.php', options)
       .then((data) => {
-        this.actualizarIncidente(options.fileName, this.comentario);
+        this.actualizarIncidente(this.comentario, options.fileName);
         this.mensajeExito().then((result) => {
           if(result){
             // Se redirecciona solo cuando presiona OK

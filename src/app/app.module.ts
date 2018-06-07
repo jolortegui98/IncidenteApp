@@ -16,6 +16,7 @@ import { DetalleTipoPage } from '../pages/detalle-tipo/detalle-tipo';
 import { BtnBackComponent } from '../components/btn-back/btn-back';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { DetailsPage } from '../pages/details/details';
+import { HistoricoPage } from '../pages/historico/historico';
 
 // importacion de libreria para uso de protocolo HTTP
 import { HttpModule } from '@angular/http';
@@ -56,7 +57,8 @@ import { File } from '@ionic-native/file';
     EnviadoPage,
     BtnBackComponent,
     ForgotPage,
-    DetailsPage
+    DetailsPage,
+    HistoricoPage
   ],
   imports: [
     BrowserModule,
@@ -78,7 +80,8 @@ import { File } from '@ionic-native/file';
     UbicacionPage,
     EnviadoPage,
     ForgotPage,
-    DetailsPage
+    DetailsPage,
+    HistoricoPage
   ],
   providers: [
     StatusBar,

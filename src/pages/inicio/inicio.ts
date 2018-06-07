@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 
-// Next Page
+// Paginas
 import { TipoPage } from '../tipo/tipo';
 import { SigninPage } from '../signin/signin';
+import { HistoricoPage } from '../historico/historico';
 
 @Component({
   selector: 'page-inicio',
@@ -45,6 +46,10 @@ export class InicioPage {
 
   cerrar(){
     this.navCtrl.push(SigninPage);
+  }
+
+  historico(){
+    this.navCtrl.push(HistoricoPage);
   }
   
 }

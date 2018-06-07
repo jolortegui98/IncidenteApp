@@ -41,9 +41,7 @@ export class UbicacionPage {
     private alertCtrl: AlertController,
     private storage: Storage,
     private platform: Platform,
-    private connectivityService: ConnectivityService ) {
-      this.initializeMap();
-    }
+    private connectivityService: ConnectivityService ) {}
 
   ngOnInit(){
     this.initializeMap();

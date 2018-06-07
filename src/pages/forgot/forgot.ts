@@ -61,13 +61,7 @@ export class ForgotPage implements OnInit {
 
       let mandado = JSON.stringify(json);
       console.log(mandado);
-      //let jsonPretty = JSON.stringify(JSON.parse(json),null,2);
-
-      /*console.log("Json a enviar email "+ this.json.get('email').value);
-      console.log("Json a enviar password "+ json.get('password').value);
-      console.log("Json a enviar re_password "+ json.get('re_password').value);
-      */
-
+  
       this.http.post(`${URL}/login/reset`, json, options)
       .subscribe(data => {
         console.log(data['_body']);
@@ -90,7 +84,7 @@ export class ForgotPage implements OnInit {
         }
       }, error => {
         console.log("Error forgot "+ error);  
-        //this.connectivityService.offline();
+        this.connectivityService.offline();
       });
   }
 
