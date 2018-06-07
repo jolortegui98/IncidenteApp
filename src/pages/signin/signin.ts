@@ -57,7 +57,7 @@ export class SigninPage {
 
     this.http.post(`${URL}/login`, json, options)
       .subscribe(data => {
-        console.log(data['_body']);
+        console.log("resultado del post "+data['_body']);
         let data_resp = data.json();
         // si se produce un error
         if (data_resp.error) {

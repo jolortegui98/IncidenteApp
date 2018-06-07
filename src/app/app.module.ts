@@ -32,7 +32,6 @@ import { CallNumber } from '@ionic-native/call-number';
 // network
 import { Network } from '@ionic-native/network';
 import { ConnectivityService } from '../providers/network/connectivity-service';
-import { HistoricoProvider } from '../providers/historico/historico';
 
 // diagnostic y open native
 import { Diagnostic } from '@ionic-native/diagnostic';
@@ -96,8 +95,7 @@ import { File } from '@ionic-native/file';
     Geolocation,
     Camera, 
     FileTransfer,
-    File,
-    HistoricoProvider
+    File
   ]
 })
 export class AppModule {}

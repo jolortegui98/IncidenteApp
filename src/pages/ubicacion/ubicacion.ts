@@ -76,15 +76,15 @@ export class UbicacionPage {
         this.showMyLocation();
 
     }).catch((error) => {
-      //Show loading
-      let loader = this.loadingCtrl.create({
-      content: "Cargando mapa..."
-      });
-      loader.present();
       // lanzador de mensaje con confirmacion
-      this.mensajeReCheck();
-      this.reCheckLocation();
       loader.dismiss();
+      this.mensajeReCheck().then((result) => {
+        if(result){
+          // vovler a lanzar la funcion de dibujar mapa
+          this.reCheckLocation();
+        }
+      });
+      
       console.log('Error getting location', error);
     });
 }  
@@ -97,7 +97,7 @@ export class UbicacionPage {
             position: this.map.getCenter()
         });
 
-        let markerInfo = "<h4>Estas aquí.</h4>";
+        let markerInfo = "<h4>Estas aquí</h4>";
 
         let infoModal = new google.maps.InfoWindow({
             content: markerInfo
