@@ -127,8 +127,8 @@ export class DetailsPage {
 
       // datos a enviar desde el form
       let json = {
-        comentario: nombreImagen,
-        imagen: comentario
+        comentario: comentario,
+        imagen: nombreImagen
       }
 
       this.http.post(`${URL}/incidente/detail/${this.token}`, json, options)

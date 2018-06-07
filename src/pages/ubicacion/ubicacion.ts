@@ -41,7 +41,9 @@ export class UbicacionPage {
     private alertCtrl: AlertController,
     private storage: Storage,
     private platform: Platform,
-    private connectivityService: ConnectivityService ) {}
+    private connectivityService: ConnectivityService ) {
+      this.initializeMap();
+    }
 
   ngOnInit(){
     this.initializeMap();
@@ -71,7 +73,7 @@ export class UbicacionPage {
         this.map = new google.maps.Map(document.getElementById("map"), options);
         loader.dismiss();
           /* We can show our location only if map was previously initialized */
-          this.showMyLocation();
+        this.showMyLocation();
 
     }).catch((error) => {
       console.log('Error getting location', error);
@@ -98,6 +100,7 @@ export class UbicacionPage {
       }
 
       ionViewDidLoad() {
+        this.initializeMap();
         // Capture data of the previous page
         this.tipoIncidente = this.navParams.get('tipoIncidente');
         this.detalleTipo = this.navParams.get('detalleTipo');

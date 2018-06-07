@@ -6,7 +6,7 @@ import { URL } from './../../utils/variables';
 import { ConnectivityService  } from '../../providers/network/connectivity-service';
 
 // importar alerta de ionic
-import { AlertController, Platform } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 
 // importar signin
 import { SigninPage } from '../signin/signin';
@@ -25,8 +25,6 @@ import { FormControl, FormGroup, Validators, ValidatorFn, AbstractControl } from
 })
 
 export class ForgotPage implements OnInit {
-    // definicion de variables
-    public token;
 
     user: FormGroup;
 
@@ -35,7 +33,6 @@ export class ForgotPage implements OnInit {
       public navCtrl: NavController,
       public http: Http,
       public alertCtrl: AlertController,
-      public platform: Platform,
       public storage: Storage,
       public connectivityService: ConnectivityService
     ) {}
@@ -49,18 +46,6 @@ export class ForgotPage implements OnInit {
     }
 
     onSubmit(){
-      /*console.log("email "+ this.user.get('email').value);
-      console.log("p1 "+ this.user.get('password').value);
-      console.log("p2 "+ this.user.get('re_password').value);
-      */
-
-      // get token from storage
-        this.platform.is('cordova')
-        ?
-          this.token = this.storage.get('token')
-        :
-          this.token = localStorage.getItem('token');
-
       // prepare Headers to post
       let headers = new Headers();
       headers.append('Accept', 'application/json');
@@ -74,7 +59,16 @@ export class ForgotPage implements OnInit {
         password2: this.user.get('re_password').value
       }
 
-      this.http.post(`${URL}/login/reset/${this.token}`, json, options)
+      let mandado = JSON.stringify(json);
+      console.log(mandado);
+      //let jsonPretty = JSON.stringify(JSON.parse(json),null,2);
+
+      /*console.log("Json a enviar email "+ this.json.get('email').value);
+      console.log("Json a enviar password "+ json.get('password').value);
+      console.log("Json a enviar re_password "+ json.get('re_password').value);
+      */
+
+      this.http.post(`${URL}/login/reset`, json, options)
       .subscribe(data => {
         console.log(data['_body']);
         let data_resp = data.json();
@@ -95,7 +89,8 @@ export class ForgotPage implements OnInit {
           this.navCtrl.setRoot(this.navCtrl.getActive().component);
         }
       }, error => {
-          this.connectivityService.offline();
+        console.log("Error forgot "+ error);  
+        //this.connectivityService.offline();
       });
   }
 
