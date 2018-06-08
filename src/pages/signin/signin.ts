@@ -106,11 +106,4 @@ export class SigninPage {
     this.navCtrl.push(ForgotPage, {});
   }
 
-  ionViewDidLoad() {}
-
-  moreDetails(){
-    this.navCtrl.push(DetailsPage);
-  }
-  
-  
 }

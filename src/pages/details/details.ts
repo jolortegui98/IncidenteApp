@@ -44,7 +44,7 @@ export class DetailsPage {
 
   takePhoto(){
     const options: CameraOptions = {
-      quality: 50,
+      quality: 40,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -83,9 +83,6 @@ export class DetailsPage {
       mimeType: "image/jpeg",
       headers: {}
     }
-
-    // esta manera es la que funciona.
-    console.log("El nombre de la imagen es: "+ options.fileName);
 
     //file transfer action
     fileTransfer.upload(this.myphoto, 'http://incidentespy.info/core/uploads/uploadPhoto.php', options)
