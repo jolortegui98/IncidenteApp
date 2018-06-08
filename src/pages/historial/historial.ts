@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation';
+//import { Geolocation } from '@ionic-native/geolocation';
 import { NavController, NavParams } from 'ionic-angular';
 import { Platform } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
@@ -23,8 +23,8 @@ export class HistorialPage {
   @ViewChild("map") mapElement;
   
   map: any;
-
-  constructor(private geolocation: Geolocation,
+  //private geolocation: Geolocation,
+  constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     private http: HttpClient,
