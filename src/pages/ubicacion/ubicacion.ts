@@ -140,6 +140,7 @@ export class UbicacionPage {
         // post to the api
         this.http.post(`${URL}/incidente/send/${this.token}`, json, options)
           .subscribe(data => {
+            console.log("url "+ `${URL}/incidente/send/${this.token}`);
             const data_resp = data.json();
 
             // handling response

@@ -5,7 +5,7 @@ import { CallNumber } from '@ionic-native/call-number';
 // Paginas
 import { TipoPage } from '../tipo/tipo';
 import { SigninPage } from '../signin/signin';
-import { HistoricoPage } from '../historico/historico';
+import { HistorialPage } from '../historial/historial';
 
 @Component({
   selector: 'page-inicio',
@@ -49,7 +49,7 @@ export class InicioPage {
   }
 
   historico(){
-    this.navCtrl.push(HistoricoPage);
+    this.navCtrl.push(HistorialPage);
   }
   
 }

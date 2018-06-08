@@ -16,7 +16,7 @@ import { DetalleTipoPage } from '../pages/detalle-tipo/detalle-tipo';
 import { BtnBackComponent } from '../components/btn-back/btn-back';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { DetailsPage } from '../pages/details/details';
-import { HistoricoPage } from '../pages/historico/historico';
+import { HistorialPage } from '../pages/historial/historial';
 
 // importacion de libreria para uso de protocolo HTTP
 import { HttpModule } from '@angular/http';
@@ -29,8 +29,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage';
 // callNumber
 import { CallNumber } from '@ionic-native/call-number';
-// network
-import { Network } from '@ionic-native/network';
 import { ConnectivityService } from '../providers/network/connectivity-service';
 
 // diagnostic y open native
@@ -58,7 +56,7 @@ import { File } from '@ionic-native/file';
     BtnBackComponent,
     ForgotPage,
     DetailsPage,
-    HistoricoPage
+    HistorialPage
   ],
   imports: [
     BrowserModule,
@@ -81,14 +79,13 @@ import { File } from '@ionic-native/file';
     EnviadoPage,
     ForgotPage,
     DetailsPage,
-    HistoricoPage
+    HistorialPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     CallNumber,
-    Network,
     ConnectivityService,
     Diagnostic,
     OpenNativeSettings,
