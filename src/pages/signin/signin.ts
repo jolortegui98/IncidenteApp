@@ -8,6 +8,7 @@ import { URL } from './../../utils/variables';
 import { AlertController, Platform } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { ForgotPage } from '../forgot/forgot';
+import { LocacionesPage } from '../locaciones/locaciones';
 
 // plugin storage
 import { Storage } from '@ionic/storage';
@@ -100,6 +101,10 @@ export class SigninPage {
 
   forgot() {
     this.navCtrl.push(ForgotPage, {});
+  }
+
+  locaciones() {
+    this.navCtrl.push(LocacionesPage, {});
   }
 
 }
