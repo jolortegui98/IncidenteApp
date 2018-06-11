@@ -59,7 +59,7 @@ export class LocacionesPage {
       
         let mapOptions = {
           center: latLngs,
-          zoom: 13,
+          zoom: 12,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
         

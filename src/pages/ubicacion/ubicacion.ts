@@ -56,18 +56,17 @@ export class UbicacionPage {
         });
         loader.present();
 
-    let locationOptions = {timeout: 10000, enableHighAccuracy: true};
+    let locationOptions = {timeout: 12000, enableHighAccuracy: false};
 
     this.geolocation.getCurrentPosition(locationOptions).then((position) => {
 
+      this.ubicacion = `${position.coords.latitude},${position.coords.longitude}`;
+
         let options = {
           center: new google.maps.LatLng(position.coords.latitude, position.coords.longitude),
-          zoom: 16,
+          zoom: 13,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
-
-        this.ubicacion = `${position.coords.latitude},${position.coords.longitude}`;
-        console.log("La ubicacion recuperada es: "+ this.ubicacion);
 
         /* Show our location */
         this.map = new google.maps.Map(document.getElementById("map"), options);
