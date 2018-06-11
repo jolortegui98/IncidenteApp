@@ -19,6 +19,7 @@ export class HistorialPage {
   token: any;
   public denuncias: any;
   public id_usuario;
+  public mensa = "No posee denunciasPROBANDO";
 
   @ViewChild("map") mapElement;
   
@@ -35,6 +36,14 @@ export class HistorialPage {
               this.storage.get('token').then((val) => {
                 this.http.get(`${URL}/incidente/denunciasUsuario/${val}`).subscribe(data => {
                   this.denuncias = data;
+
+                  //ultimo comit
+                  if (data) {
+                    this.mensa = "Resumen de denunciasPROBANDO";
+                    console.log(this.mensa);
+                  }
+                  //ultimo comit
+                  
                   console.log(this.denuncias);
                 }, err => {
                   console.log(err);
