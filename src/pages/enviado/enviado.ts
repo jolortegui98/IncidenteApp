@@ -4,6 +4,7 @@ import { CallNumber } from '@ionic-native/call-number';
 // import de pagina Detalle
 import { DetailsPage } from '../details/details';
 import { Incidente } from '../../models/incidente.model';
+import { LocacionesPage } from '../locaciones/locaciones';
 
 @Component({
   selector: 'page-enviado',
@@ -37,4 +38,7 @@ export class EnviadoPage {
   }
   /* Implementacion del Domingo 04-06-28*/
 
+  locaciones(){
+    this.navCtrl.push(LocacionesPage, { incidente: this.incidente });
+  }
 }
