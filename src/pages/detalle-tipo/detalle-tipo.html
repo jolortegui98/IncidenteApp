@@ -1,115 +1,114 @@
 <ion-content padding>
-  <div class="progress-bar">
-    <div class="progress-bar__section is-active"></div>
-    <div class="progress-bar__section is-active"></div>
-    <div class="progress-bar__section"></div>
-  </div>
+    <div class="progress-bar">
+        <div class="progress-bar__section is-active"></div>
+        <div class="progress-bar__section is-active"></div>
+        <div class="progress-bar__section"></div>
+    </div>
 
-  <div class="header">
-    <h1 class="header__title">Describa el escenario</h1>
-  </div>
+    <div class="header">
+        <h1 class="header__title">Describa el escenario</h1>
+    </div>
 
-  <!-- if accident -->
-  <ion-list *ngIf="tipoIncidente === 'accident'" no-lines id="type">
-    <ion-item>
-      <ion-label>Opcion 1</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
-    </ion-item>
+    <!-- if accident -->
+    <ion-list *ngIf="tipoIncidente === '1'" no-lines id="type">
+        <ion-item>
+            <ion-label>Accidente 1</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 2</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
-    </ion-item>
+        <ion-item>
+            <ion-label>Accidente 2</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 3</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
-    </ion-item>
+        <ion-item>
+            <ion-label>Accidente 3</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 4</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
-    </ion-item>
-  </ion-list>
+        <ion-item>
+            <ion-label>Accidente 4</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+    </ion-list>
 
-  <!-- if theft -->
-  <ion-list *ngIf="tipoIncidente === 'theft'" no-lines id="type">
-    <ion-item>
-      <ion-label>Opcion 1</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
-    </ion-item>
+    <!-- if theft -->
+    <ion-list *ngIf="tipoIncidente === '2'" no-lines id="type">
+        <ion-item>
+            <ion-label>Hurto 1</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 2</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
-    </ion-item>
+        <ion-item>
+            <ion-label>Hurto 2</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 3</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
-    </ion-item>
+        <ion-item>
+            <ion-label>Hurto 3</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 4</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
-    </ion-item>
-  </ion-list>
-
-
-  <!-- if fire -->
-  <ion-list *ngIf="tipoIncidente === 'fire'" no-lines id="type">
-    <ion-item>
-      <ion-label>Opcion 1</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Opcion 2</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Opcion 3</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
-    </ion-item>
-
-    <ion-item>
-      <ion-label>Opcion 4</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
-    </ion-item>
-  </ion-list>
+        <ion-item>
+            <ion-label>Hurto 4</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+    </ion-list>
 
 
-  <!-- if health emergency -->
-  <ion-list *ngIf="tipoIncidente === 'health'" no-lines id="type">
-    <ion-item>
-      <ion-label>Opcion 1</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
-    </ion-item>
+    <!-- if fire -->
+    <ion-list *ngIf="tipoIncidente === '3'" no-lines id="type">
+        <ion-item>
+            <ion-label>Incendio 1</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 2</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
-    </ion-item>
+        <ion-item>
+            <ion-label>Incendio 2</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 3</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
-    </ion-item>
+        <ion-item>
+            <ion-label>Incendio 3</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
+        </ion-item>
 
-    <ion-item>
-      <ion-label>Opcion 4</ion-label>
-      <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
-    </ion-item>
-  </ion-list>
+        <ion-item>
+            <ion-label>Incendio 4</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+    </ion-list>
 
-  <!-- go to next page -->
-  <ion-fab right bottom (click)="goToNextPage(gravedadIncidente)">
-    <button ion-fab color="detail">
+    <!-- if health emergency -->
+    <ion-list *ngIf="tipoIncidente === '4'" no-lines id="type">
+        <ion-item>
+            <ion-label>Emergencia de Salud 1</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Emergencia de Salud 2</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Emergencia de Salud 3</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Emergencia de Salud 4</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+
+    <!-- go to next page -->
+    <ion-fab right bottom (click)="goToNextPage(gravedadIncidente)">
+        <button ion-fab color="detail">
       <ion-icon name="ios-arrow-round-forward"></ion-icon>
     </button>
-  </ion-fab>
+    </ion-fab>
 
-  <!-- go back -->
-  <btn-back></btn-back>
+    <!-- go back -->
+    <btn-back></btn-back>
 </ion-content>

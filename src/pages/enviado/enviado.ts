@@ -5,6 +5,7 @@ import { CallNumber } from '@ionic-native/call-number';
 import { DetailsPage } from '../details/details';
 import { Incidente } from '../../models/incidente.model';
 import { LocacionesPage } from '../locaciones/locaciones';
+import { InicioPage } from '../inicio/inicio';
 
 @Component({
   selector: 'page-enviado',
@@ -28,8 +29,9 @@ export class EnviadoPage {
       .catch(() => console.log('Error launching dialer'));
   }
 
+  // pop to inicio
   goToNextPage() {
-    this.navCtrl.popToRoot();
+    this.navCtrl.push(InicioPage, {});
   }
 
   /* Implementacion del Domingo 04-06-28*/

@@ -1,10 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ConnectivityService } from '../../providers/network/connectivity-service';
-//import { Incidente } from '../../models/incidente.model';
-
+import { Incidente } from '../../models/incidente.model';
 
 // Components
 import { URL } from '../../utils/variables';
@@ -21,23 +20,21 @@ export class LocacionesPage {
   public locaciones = [];
   public lato; 
   public lngo;
-  public tipo_denuncia = 1;
-
-  //public incidente: Incidente;
+  public incidente: Incidente;
 
   @ViewChild("map") mapElement;
   map: any;
 
-  //public navParams: NavParams,
   constructor(
     public navCtrl: NavController,
     private http: Http,
+    public navParams: NavParams,
     private connectivityService: ConnectivityService, 
     private geolocation: Geolocation) {}
 
   ngOnInit(){
     this.loadMap();
-    //this.incidente = this.navParams.get('incidente');
+    this.incidente = this.navParams.get('incidente');
   }
 
   loadMap(){
@@ -47,9 +44,14 @@ export class LocacionesPage {
       // setear lat lng
       this.lato = position.coords.latitude;
       this.lngo =  position.coords.longitude;
-      //console.log("incidente"+ this.incidente);
+      console.log("incidente enviado"+ this.incidente.tipo_incidente);
 
-      this.http.get(`${URL}/incidente/dependencia/1`).subscribe(datae => {
+      // chequeo de datos para accidente  
+      if(this.incidente.tipo_incidente === '4'){
+        this.incidente.tipo_incidente = '1';
+      }
+
+      this.http.get(`${URL}/incidente/dependencia/`+this.incidente.tipo_incidente).subscribe(datae => {
         var json = datae.json();
         console.log(json);
 
@@ -69,7 +71,6 @@ export class LocacionesPage {
           map: map,
           animation: google.maps.Animation.DROP,
           position: latLngs
-          //,icon: 'http://www.cartagram.com/wp-content/uploads/2013/04/blog_custommarkers_2a.png'
       });
   
       let markerInfo = "<h4>Estas aquí</h4>";
@@ -91,16 +92,16 @@ export class LocacionesPage {
           
             // render de acuerdo a que tipo sea.
           var iconoRender;
-          // 1 - hospiales
-          if(this.tipo_denuncia == 1){
+          // 1 - hospitales
+          if(this.incidente.tipo_incidente === '1'){
             iconoRender = 'http://maps.google.com/mapfiles/ms/icons/hospitals.png';
           // 2 - dependencias policiales
-          } else if(this.tipo_denuncia == 2){
+          } else if(this.incidente.tipo_incidente === '2'){
             iconoRender = 'http://maps.google.com/mapfiles/ms/icons/police.png';
           // 3- bomberos    
-          } else if(this.tipo_denuncia == 3){
+          } else if(this.incidente.tipo_incidente === '3'){
             iconoRender = 'http://maps.google.com/mapfiles/ms/icons/firedept.png';
-          }
+          } 
 
           // Creating a marker and putting it on the map
           var marker = new google.maps.Marker({
@@ -124,11 +125,10 @@ export class LocacionesPage {
             google.maps.event.addListener(marker, "click", function(e) {
               var contentString = '<b><h5>'+data.nombre+'</h5></b>'+
               '<p><b>Dirección: </b>'+data.direccion+'.</p>'+
-              '<p><b>Numero: </b>0'+data.numero+'.</p>';
+              '<p><b>Número: </b>0'+data.numero+'.</p>';
               infoWindow.setContent(contentString);
               infoWindow.open(map, marker);
             });
-    
     
           })(marker, data);
     
