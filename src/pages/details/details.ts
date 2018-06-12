@@ -20,7 +20,7 @@ import { Incidente } from '../../models/incidente.model';
 
 export class DetailsPage {
   myphoto:any;
-  comentario: string;
+  comentario = " ";
   fileNameSend: string;
   public token;
   public incidente: Incidente;
@@ -28,8 +28,7 @@ export class DetailsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private camera: Camera,
     private transfer: FileTransfer, private loadingCtrl: LoadingController, public http: Http,
     private alertCtrl: AlertController, private storage: Storage, private platform: Platform,
-    private connectivityService: ConnectivityService) {
-    }
+    private connectivityService: ConnectivityService) {}
 
     ionViewDidLoad() {
       // get token from storage
@@ -63,43 +62,45 @@ export class DetailsPage {
   }
 
   uploadImage(){
-    //Show loading
-    let loader = this.loadingCtrl.create({
-      content: "Actualizando incidente..."
-    });
-    loader.present();
+        // foto no creada
+        if(!this.myphoto){
+          this.mensajeError().then((result) => {
+            if(result === false){
+              // Se redirecciona al inicio
+              this.navCtrl.push(InicioPage);
+            }
+          })
+        }
+
+        //Show loading
+        let loader = this.loadingCtrl.create({
+          content: "Actualizando incidente..."
+        });
+        //loader.present();
 
     //create file transfer object
     const fileTransfer: FileTransferObject = this.transfer.create();
 
     //random int
-    var random = Math.floor(Math.random() * 10000);
+    var random = Math.floor(Math.random() * 1000);
     // current date
     var myDate: String = new Date().toISOString();
 
     //option transfer
     let options: FileUploadOptions = {
       fileKey: 'photo',
-      fileName: "myImage_" + this.incidente.tipo_incidente +"_"+ random +"_"+  myDate + ".jpg",
+      fileName: "myImage_" + random + "_" +  myDate + ".jpg",
       chunkedMode: false,
       httpMethod: 'post',
       mimeType: "image/jpeg",
       headers: {}
     }
 
+    //loader.present();
     //file transfer action
     fileTransfer.upload(this.myphoto, 'http://incidentespy.info/core/uploads/uploadPhoto.php', options)
       .then((data) => {
-
-        // si la foto no esta cargada
-        if(!options.fileName || !this.comentario){
-          this.mensajeError().then((result) => {
-            if(!result){
-              this.navCtrl.push(InicioPage);
-            }
-          }) 
-        }
-
+        
         // si ambos valores estan cargadors
         this.actualizarIncidente(this.comentario, options.fileName);
         this.mensajeExito().then((result) => {
@@ -119,7 +120,7 @@ export class DetailsPage {
       return new Promise((resolve, reject) =>{
         this.alertCtrl.create({
         title : 'Advertencia',
-        subTitle: 'Por favor, complete los campos.',
+        subTitle: '<br> Por favor, complete los campos.',
         buttons: [
           {
             text: 'Cancelar',
@@ -130,7 +131,7 @@ export class DetailsPage {
             handler : () =>{ }
           }, 
         ],
-        enableBackdropDismiss : false
+        enableBackdropDismiss : true
         }).present();
       })
       }

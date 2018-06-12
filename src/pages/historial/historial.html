@@ -21,9 +21,6 @@
             <p><u>Descripcion</u></p>
             <p>{{denuncia.descripcion}}</p>
             <br/>
-            <p><u>Fecha de denuncia</u></p>
-            <p>{{denuncia.creacion}}</p>
-            <br/>
             <p><u>Imagen</u></p>
             <div *ngIf="denuncia.imagen;then content else other"></div>
             <ng-template #content>
@@ -35,6 +32,10 @@
             <br/>
             <p><u>Comentario</u></p>
             <p>{{denuncia.comentario}}</p>
+            <br/>
+            <p><u>Fecha de denuncia</u></p>
+            <p>{{denuncia.creacion}}</p>
+            <br/>
         </ion-item>
     </ion-list>
 </ion-content>

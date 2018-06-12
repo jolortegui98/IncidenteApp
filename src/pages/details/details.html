@@ -7,6 +7,13 @@
 </ion-header>
 
 <ion-content padding>
+    <div class="progress-bar">
+        <div class="progress-bar__section is-active"></div>
+        <div class="progress-bar__section is-active"></div>
+        <div class="progress-bar__section is-active"></div>
+        <div class="progress-bar__section is-active"></div>
+    </div>
+
     <h4>Resumen de denuncia</h4>
     <p><b>Tipo de incidente</b></p>
     <p>{{ incidente?.tipo_incidente }}</p>
@@ -26,4 +33,6 @@
     </ion-item>
     <br/>
     <button ion-button (click)="uploadImage()" full color="dark">Actualizar incidente</button>
+
+    <btn-back></btn-back>
 </ion-content>
