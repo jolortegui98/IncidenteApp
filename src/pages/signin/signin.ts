@@ -14,6 +14,7 @@ import { LocacionesPage } from '../locaciones/locaciones';
 import { Storage } from '@ionic/storage';
 import { InicioPage } from '../inicio/inicio';
 import { ConnectivityService } from '../../providers/network/connectivity-service';
+import { DetailsPage } from '../details/details';
 
 @Component({
   selector: 'page-signin',
@@ -105,6 +106,10 @@ export class SigninPage {
 
   locaciones() {
     this.navCtrl.push(LocacionesPage, {});
+  }
+
+  detalle() {
+    this.navCtrl.push(DetailsPage, {});
   }
 
 }
