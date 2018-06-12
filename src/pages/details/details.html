@@ -8,14 +8,15 @@
 
 <ion-content padding>
     <h4>Resumen de denuncia</h4>
-    <p><b>Tipo de incidente</b></p>
-    <p>{{ incidente?.tipo_incidente }}</p>
+    <!--<p><b>Tipo de incidente</b></p>
+    <p>{{ denuncia.tipo_incidente }}</p>
+    -->
     <br />
     <p><b>Descripcion</b></p>
-    <p>{{ incidente?.descripcion}}</p>
+    <p>{{ denuncia.descripcion}}</p>
     <br />
     <p><b>Ubicacion</b></p>
-    <p>{{ incidente?.ubicacion }}</p>
+    <p>{{ denuncia.ubicacion }}</p>
     <br />
     <hr />
     <button ion-button (click)="takePhoto()" full color="primary">Tomar foto</button>

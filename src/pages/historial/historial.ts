@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-//import { Geolocation } from '@ionic-native/geolocation';
+import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Platform } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
@@ -19,11 +18,8 @@ export class HistorialPage {
   token: any;
   public denuncias: any;
   public id_usuario;
-  public mensa = "No posee denunciasPROBANDO";
+  public mensa = "No posee denuncias";
 
-  @ViewChild("map") mapElement;
-  
-  map: any;
   //private geolocation: Geolocation,
   constructor(
     public navCtrl: NavController,
@@ -36,26 +32,17 @@ export class HistorialPage {
               this.storage.get('token').then((val) => {
                 this.http.get(`${URL}/incidente/denunciasUsuario/${val}`).subscribe(data => {
                   this.denuncias = data;
-
-                  //ultimo comit
-                  if (data) {
-                    this.mensa = "Resumen de denunciasPROBANDO";
-                    console.log(this.mensa);
+                  // verificar que existe el objeto
+                  if (Object.keys(this.denuncias).length) {
+                    this.mensa = "Resumen de denuncias";
                   }
-                  //ultimo comit
-                  
-                  console.log(this.denuncias);
                 }, err => {
                   console.log(err);
                 });
-                console.log('Your token is', val);
               });
-              //this.storage.get('token').then( token => { this.token = token } );
             } else {
               this.token = localStorage.getItem('token');
-              
             }
-            console.log(this.token);
     }
 
   ngOnInit(){}

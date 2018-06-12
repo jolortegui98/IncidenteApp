@@ -10,7 +10,7 @@ import { ConnectivityService } from '../../providers/network/connectivity-servic
 import { AlertController, Platform } from 'ionic-angular';
 import { URL } from './../../utils/variables';
 import { Storage } from '@ionic/storage';
-import { Incidente } from '../../models/incidente.model';
+//import { Incidente } from '../../models/incidente.model';
 
 @Component({
   selector: 'page-details',
@@ -23,12 +23,23 @@ export class DetailsPage {
   comentario: string;
   fileNameSend: string;
   public token;
-  public incidente: Incidente;
+  public denuncia: any;
+  //public incidente: Incidente;
+
 
   constructor(public navParams: NavParams, public navCtrl: NavController, private camera: Camera,
     private transfer: FileTransfer, private loadingCtrl: LoadingController, public http: Http,
     private alertCtrl: AlertController, private storage: Storage, private platform: Platform,
-    private connectivityService: ConnectivityService) {}
+    private connectivityService: ConnectivityService) {
+      //this.incidente = this.navParams.get('incidente');
+            // get token from storage
+                this.http.get(`${URL}/incidente/ultimaDenunciasUsuario/${this.token}`).subscribe(dataDenuncia => {
+                  this.denuncia = dataDenuncia;
+                  console.log("La ultima denuncia de este usuario es "+this.denuncia);
+                }, err => {
+                  console.log(err);
+                });
+    }
 
   ionViewDidLoad() {
     // get token from storage
@@ -38,8 +49,6 @@ export class DetailsPage {
       this.token = localStorage.getItem('token');
     }
     console.log(this.token);
-
-    this.incidente = this.navParams.get('incidente');
   }
 
   takePhoto(){
@@ -98,7 +107,14 @@ export class DetailsPage {
 
       }, (err) => {
         console.log(err);
-        alert("Error");
+        this.mensajeError().then((result) => {
+          if(result){
+            // refrescar para que vuelva a ingresar
+            this.navCtrl.setRoot(this.navCtrl.getActive().component);
+          }else {
+            this.navCtrl.push(InicioPage);
+          }
+        })
         loader.dismiss();
       });
   }
@@ -117,6 +133,26 @@ export class DetailsPage {
       }).present();
     })
     }
+
+    mensajeError(): Promise<boolean> {
+      return new Promise((resolve, reject) =>{
+        this.alertCtrl.create({
+        title : 'Error!',
+        subTitle: 'No se encontro fotografia, desea tomar una?',
+        buttons: [
+          {
+            text: 'Cancelar',
+            handler:_=> resolve(false)
+          },
+          {
+            text: 'Aceptar',
+            handler:_=> resolve(true)
+          },  
+        ]
+        }).present();
+      })
+      }
+  
 
   actualizarIncidente(comentario, nombreImagen){
       let headers = new Headers();

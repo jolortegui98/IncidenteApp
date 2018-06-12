@@ -8,9 +8,9 @@
 
 <ion-content>
     <ion-list inset>
-        <!-- ultimo commit -->
-        <h1>{{ mensa }}</h1>
-        <!-- ultimo commit -->
+        <div class="text-center">
+            <h3>{{ mensa }}</h3>
+        </div>
         <ion-item *ngFor="let denuncia of denuncias">
             <b>Denuncia tipo</b>
             <h2>{{denuncia.tipo_incidente}}</h2>
