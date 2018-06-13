@@ -120,7 +120,7 @@ export class DetailsPage {
       return new Promise((resolve, reject) =>{
         this.alertCtrl.create({
         title : 'Advertencia',
-        subTitle: '<br> Por favor, complete los campos.',
+        subTitle: 'Por favor, complete los campos.',
         buttons: [
           {
             text: 'Cancelar',
@@ -143,7 +143,7 @@ export class DetailsPage {
           subTitle: 'El incidente ha sido actualizado.',
           buttons: [
             {
-            text: 'OK',
+            text: 'Aceptar',
             handler:_=> resolve(true)
             }
           ]
@@ -172,7 +172,7 @@ export class DetailsPage {
             this.alertCtrl.create({
               title: 'Error!',
               subTitle: data_resp.mensaje,
-              buttons: ['OK']
+              buttons: ['Aceptar']
             }).present();
           } else { // exito de peticion
             console.log("exito actualizada la foto");

@@ -2,41 +2,4 @@
         .header {
             margin: 0rem 0 !important;
         }
-        #type-btn {
-            &--accident,
-            &--theft,
-            &--fire,
-            &--health {
-                &:hover,
-                &:focus {
-                    .label {
-                        color: color($colors, light);
-                    }
-                }
-            }
-            &--accident {
-                &:hover,
-                &:focus {
-                    background: color($severity-colors, very-high);
-                }
-            }
-            &--theft {
-                &:hover,
-                &:focus {
-                    background: color($colors, primary);
-                }
-            }
-            &--fire {
-                &:hover,
-                &:focus {
-                    background: color($severity-colors, mid);
-                }
-            }
-            &--health {
-                &:hover,
-                &:focus {
-                    background: color($colors, detail);
-                }
-            }
-        }
     }

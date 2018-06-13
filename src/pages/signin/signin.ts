@@ -62,7 +62,7 @@ export class SigninPage {
           this.alertCtrl.create({
             title: 'Error!',
             subTitle: data_resp.mensaje,
-            buttons: ['OK']
+            buttons: ['Aceptar']
           }).present();
         } else { // exito de peticion
           // almacena token e id_usuario

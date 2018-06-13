@@ -56,11 +56,11 @@ export class TipoPage {
     mensajeGps(): Promise<boolean> {
       return new Promise((resolve, reject) =>{
         this.alertCtrl.create({
-        title : 'Advertencia!',
+        title : 'Advertencia',
         subTitle: 'Esta aplicacion require GPS.',
         buttons: [
           {
-          text: 'OK',
+          text: 'Aceptar',
           handler:_=> resolve(true)
           }
         ]

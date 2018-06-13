@@ -54,14 +54,14 @@ export class SignupPage {
           this.alertCtrl.create({
             title: "Error!",
             subTitle: data_resp.mensaje,
-            buttons: ["OK"]
+            buttons: ["Aceptar"]
           }).present();
         } else { // exito de peticion
           // crea un alert
           this.alertCtrl.create({
             title: "Registro exitoso",
             subTitle: data_resp.mensaje,
-            buttons: ["OK"]
+            buttons: ["Aceptar"]
           }).present();
           console.log(data_resp);
           this.navCtrl.popToRoot();

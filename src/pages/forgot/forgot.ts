@@ -70,14 +70,14 @@ export class ForgotPage implements OnInit {
           this.alertCtrl.create({
             title: 'Exito!',
             subTitle: data_resp.mensaje,
-            buttons: ['OK']
+            buttons: ['Aceptar']
           }).present();
           this.navCtrl.push(SigninPage, {});
         } else {
           this.alertCtrl.create({
             title: 'Error!',
             subTitle: data_resp.mensaje,
-            buttons: ['OK']
+            buttons: ['Aceptar']
           }).present();
           // refresca para que vuelva a ingresar
           this.navCtrl.setRoot(this.navCtrl.getActive().component);

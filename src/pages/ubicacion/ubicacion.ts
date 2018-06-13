@@ -148,7 +148,7 @@ export class UbicacionPage {
               this.alertCtrl.create({
                 title: 'Error!',
                 subTitle: data_resp.mensaje,
-                buttons: ['OK']
+                buttons: ['Aceptar']
               }).present()
             } else {
               // if all ok
@@ -177,11 +177,11 @@ export class UbicacionPage {
         mensajeReCheck(): Promise<boolean> {
           return new Promise((resolve, reject) =>{
             this.alertCtrl.create({
-            title: 'Error!',
+            title: 'Advertencia',
             subTitle: "Conexion perdida, reintentando establecer.",
             buttons: [
               {
-              text: 'OK',
+              text: 'Aceptar',
               handler:_=> resolve(true)
               }
             ]

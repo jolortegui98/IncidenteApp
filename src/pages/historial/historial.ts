@@ -30,6 +30,7 @@ export class HistorialPage {
             // get token from storage
             if (this.platform.is('cordova')) {
               this.storage.get('token').then((val) => {
+                this.token = val;
                 this.http.get(`${URL}/incidente/denunciasUsuario/${val}`).subscribe(data => {
                   this.denuncias = data;
                   // verificar que existe el objeto
@@ -40,8 +41,6 @@ export class HistorialPage {
                   console.log(err);
                 });
               });
-            } else {
-              this.token = localStorage.getItem('token');
             }
     }
 

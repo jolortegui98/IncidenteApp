@@ -4,7 +4,8 @@ import { Http } from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 import { ConnectivityService } from '../../providers/network/connectivity-service';
 import { Incidente } from '../../models/incidente.model';
-
+import { Platform, LoadingController, AlertController } from 'ionic-angular';
+import { Diagnostic } from '@ionic-native/diagnostic';
 // Components
 import { URL } from '../../utils/variables';
 
@@ -30,7 +31,11 @@ export class LocacionesPage {
     private http: Http,
     public navParams: NavParams,
     private connectivityService: ConnectivityService, 
-    private geolocation: Geolocation) {}
+    private geolocation: Geolocation,
+    private loadingCtrl: LoadingController,
+    private platform: Platform,
+    private diagnostic: Diagnostic,
+    private alertCtrl: AlertController) {}
 
   ngOnInit(){
     this.loadMap();
@@ -38,7 +43,12 @@ export class LocacionesPage {
   }
 
   loadMap(){
-
+    //Show loading
+    let loader = this.loadingCtrl.create({
+    content: "Cargando mapa..."
+    });
+    loader.present();
+    
     let locationOptions = {timeout: 10000, enableHighAccuracy: true};
     this.geolocation.getCurrentPosition(locationOptions).then((position) => {
       // setear lat lng
@@ -51,6 +61,7 @@ export class LocacionesPage {
         this.incidente.tipo_incidente = '1';
       }
 
+      
       this.http.get(`${URL}/incidente/dependencia/`+this.incidente.tipo_incidente).subscribe(datae => {
         var json = datae.json();
         console.log(json);
@@ -64,7 +75,7 @@ export class LocacionesPage {
         }
         
         var map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-
+        
         // mi marcador 
 
         let markerActual = new google.maps.Marker({
@@ -139,11 +150,48 @@ export class LocacionesPage {
         this.connectivityService.offline();
       });
 
-
+      loader.dismiss();
     }).catch((error) => {
+      //loader.dismiss();
       console.log('Error getting location', error);
+      this.mensajeReCheck().then((result) => {
+        if(result){
+          // vovler a lanzar la funcion de dibujar mapa
+          this.reCheckLocation();
+        }
+      });
+
     });
 
   }
+
+  reCheckLocation() {
+    this.platform.ready().then((readySource) => {
+  
+      this.diagnostic.isLocationEnabled().then(
+        (isAvailable) => {
+
+          if(isAvailable === true){
+            this.loadMap();
+          }           
+          }).catch((e) => {});
+  
+    });
+  }
+
+  mensajeReCheck(): Promise<boolean> {
+    return new Promise((resolve, reject) =>{
+      this.alertCtrl.create({
+      title: 'Advertencia',
+      subTitle: "Conexion perdida, reintentando establecer.",
+      buttons: [
+        {
+        text: 'Aceptar',
+        handler:_=> resolve(true)
+        }
+      ]
+      }).present();
+    })
+    }
 
 }
