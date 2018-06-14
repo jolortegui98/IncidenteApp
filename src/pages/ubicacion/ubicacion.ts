@@ -8,7 +8,7 @@ import { ConnectivityService } from '../../providers/network/connectivity-servic
 import { Diagnostic } from '@ionic-native/diagnostic';
 
 // Models
-import { Incidente } from '../../models/incidente.model';
+//import { Incidente } from '../../models/incidente.model';
 
 // Components
 import { EnviadoPage } from '../enviado/enviado';
@@ -31,6 +31,7 @@ export class UbicacionPage {
   private detalleTipo;
   public ubicacion;
   public token;
+  public respuestas = []; 
 
   @ViewChild("map") mapElement;
   map: any;
@@ -111,14 +112,57 @@ export class UbicacionPage {
         // Capture data of the previous page
         this.tipoIncidente = this.navParams.get('tipoIncidente');
         this.detalleTipo = this.navParams.get('detalleTipo');
+      
+        //let respuesta_user = []; 
 
+        /*let enumerableKeys = [];  
+        for (let key in this.detalleTipo) {  
+          enumerableKeys.push(key);
+        }
+        console.log("enumarableksys");
+        console.log(enumerableKeys);
+*/
+        for (let key in this.detalleTipo) {
+         // let value =this.detalleTipo[key];
+          //console.log("key " + key + " value " + value);
+
+          if(this.detalleTipo[key] === true){
+            //console.log("cantidad verdaderas "+ key);
+
+            if(key == 'op1'){
+              //var res1 = respuesta: Accidente 1";
+              this.respuestas.push({"respuesta": "Accidente 1"});
+            }else if(key == 'op2'){
+              //var res2 = "Accidente 2";
+              this.respuestas.push({"respuesta": "Accidente 2"});
+            }else if(key == 'op3'){
+              //var res3 = "Accidente 3";
+              this.respuestas.push({"respuesta": "Accidente 3"});
+            }else if(key == 'op4'){
+              //var res4 = "Accidente 4";
+              this.respuestas.push({"respuesta": "Accidente 4"});
+            }
+          }
+        }
+
+        console.log("Array respuestas");
+        console.log(this.respuestas);
+
+
+
+        /*var ids:string = [];
+
+        for(let result of this.detalleTipo){
+          ids.push(result.Id);
+        }*/
+                
         // get token from storage
         if (this.platform.is('cordova')) {
           this.storage.get('token').then( token => { this.token = token } );
         } else {
           this.token = localStorage.getItem('token');
         }
-        console.log(this.token);
+        //console.log(this.token);
       }
 
       enviarIncidente() {
@@ -129,9 +173,9 @@ export class UbicacionPage {
         let options = new RequestOptions({ headers });
 
         // prepare json to post
-        let json: Incidente = {
+        let json = {
           tipo_incidente: this.tipoIncidente,
-          descripcion: this.detalleTipo,
+          descripcion: this.respuestas,
           ubicacion: this.ubicacion,
           estado: 1
         }

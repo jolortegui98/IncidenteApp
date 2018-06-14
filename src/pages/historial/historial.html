@@ -19,9 +19,9 @@
             <p>{{denuncia.id}}</p>
             <br/>
             <p><u>Descripcion</u></p>
-            <p *ngFor="let color of denuncia.descripcion"></p>
-            <p>{{color}}</p>
-            <br/>
+            <li *ngFor="let item of denuncia.descripcion; let i = index">
+                {{item}}
+            </li>
             <p><u>Imagen</u></p>
             <div *ngIf="denuncia.imagen;then content else other"></div>
             <ng-template #content>
@@ -31,8 +31,11 @@
                 <p><img src="http://incidentespy.info/core/uploads/no_image.png"></p>
             </ng-template>
             <br/>
-            <p><u>Comentario</u></p>
-            <p>{{denuncia.comentario}}</p>
+            <div *ngIf="denuncia.comentario;then content"></div>
+            <ng-template #content>
+                <p><u>Comentario</u></p>
+                <p>{{denuncia.comentario}}"></p>
+            </ng-template>
             <br/>
             <p><u>Fecha de denuncia</u></p>
             <p>{{denuncia.creacion}}</p>
