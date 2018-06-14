@@ -121,7 +121,8 @@ export class UbicacionPage {
         }
         console.log("enumarableksys");
         console.log(enumerableKeys);
-*/
+        */
+
         for (let key in this.detalleTipo) {
          // let value =this.detalleTipo[key];
           //console.log("key " + key + " value " + value);
@@ -129,22 +130,49 @@ export class UbicacionPage {
           if(this.detalleTipo[key] === true){
             //console.log("cantidad verdaderas "+ key);
 
-            if(key == 'op1'){
-              //var res1 = respuesta: Accidente 1";
-              this.respuestas.push({"respuesta": "Accidente 1"});
-            }else if(key == 'op2'){
-              //var res2 = "Accidente 2";
-              this.respuestas.push({"respuesta": "Accidente 2"});
-            }else if(key == 'op3'){
-              //var res3 = "Accidente 3";
-              this.respuestas.push({"respuesta": "Accidente 3"});
-            }else if(key == 'op4'){
-              //var res4 = "Accidente 4";
-              this.respuestas.push({"respuesta": "Accidente 4"});
-            }
+            if(this.tipoIncidente == '1'){
+              if(key == 'op1'){
+                this.respuestas.push({"respuesta": "Accidente 1"});
+              }else if(key == 'op2'){
+                this.respuestas.push({"respuesta": "Accidente 2"});
+              }else if(key == 'op3'){
+                this.respuestas.push({"respuesta": "Accidente 3"});
+              }else if(key == 'op4'){
+                this.respuestas.push({"respuesta": "Accidente 4"});
+              }
+            } else if(this.tipoIncidente == '2'){
+              if(key == 'op1'){
+                this.respuestas.push({"respuesta": "Hurto 1"});
+              }else if(key == 'op2'){
+                this.respuestas.push({"respuesta": "Hurto 2"});
+              }else if(key == 'op3'){
+                this.respuestas.push({"respuesta": "Hurto 3"});
+              }else if(key == 'op4'){
+                this.respuestas.push({"respuesta": "Hurto 4"});
+              }
+            } else if(this.tipoIncidente == '3'){
+              if(key == 'op1'){
+                this.respuestas.push({"respuesta": "Incendio 1"});
+              }else if(key == 'op2'){
+                this.respuestas.push({"respuesta": "Incendio 2"});
+              }else if(key == 'op3'){
+                this.respuestas.push({"respuesta": "Incendio 3"});
+              }else if(key == 'op4'){
+                this.respuestas.push({"respuesta": "Incendio 4"});
+              }
+            } else if(this.tipoIncidente == '4'){
+              if(key == 'op1'){
+                this.respuestas.push({"respuesta": "Emergencia 1"});
+              }else if(key == 'op2'){
+                this.respuestas.push({"respuesta": "Emergencia 2"});
+              }else if(key == 'op3'){
+                this.respuestas.push({"respuesta": "Emergencia 3"});
+              }else if(key == 'op4'){
+                this.respuestas.push({"respuesta": "Emergencia 4"});
+              }
           }
         }
-
+      }
         console.log("Array respuestas");
         console.log(this.respuestas);
 
