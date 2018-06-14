@@ -9,13 +9,26 @@
 <ion-content padding>
     <h4>Resumen de denuncia</h4>
     <p><b>Tipo de incidente</b></p>
-    <p>{{ incidente?.tipo_incidente }}</p>
-    <br />
+    <div *ngIf="incidente?.tipo_incidente == 1;then content1"></div>
+    <ng-template #content1>
+        <p>Accidente de tránsito </p>
+    </ng-template>
+    <div *ngIf="incidente?.tipo_incidente == 2;then content2"></div>
+    <ng-template #content2>
+        <p>Hurto</p>
+    </ng-template>
+    <div *ngIf="incidente?.tipo_incidente == 3;then content3"></div>
+    <ng-template #content3>
+        <p>Incendio</p>
+    </ng-template>
+    <div *ngIf="incidente?.tipo_incidente == 4;then content4"></div>
+    <ng-template #content4>
+        <p>Emergencia medica</p>
+    </ng-template>
     <p><b>Descripcion</b></p>
-    <p>{{ incidente?.descripcion}}</p>
-    <br />
-    <p><b>Ubicacion</b></p>
-    <p>{{ incidente?.ubicacion }}</p>
+    <li *ngFor="let item of incidente?.descripcion; let i = index">
+        {{item.respuesta}}
+    </li>
     <br />
     <hr />
     <button ion-button (click)="takePhoto()" full color="primary">Tomar foto</button>
