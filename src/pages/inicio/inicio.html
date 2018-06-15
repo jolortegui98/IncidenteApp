@@ -5,8 +5,8 @@
             <button ion-button clear round padding no-margin (click)="historico()">
                 <ion-icon name="archive"></ion-icon>
             </button>
-            <button ion-button clear round padding no-margin>
-                <ion-icon name="pie"></ion-icon>
+            <button ion-button clear round padding no-margin (click)="MapaInicial()">
+                <ion-icon name="map"></ion-icon>
             </button>
             <button ion-button clear round padding no-margin (click)="cerrar()">
         <ion-icon name="log-out"></ion-icon>
@@ -18,9 +18,11 @@
         <input type="range" class="slider__input" value="0" max="100" [(ngModel)]="range" (change)="onChange(range)">
     </div>
 
-    <button ion-button no-margin (click)="call()" class="btn">
+    <div class="box">
+        <button ion-button no-margin (click)="call()">
     <ion-icon margin-right name="call"></ion-icon> Llamar al 911
     </button>
+    </div>
 
     <div class="footer">
         <h4 class="footer__title">Tips</h4>

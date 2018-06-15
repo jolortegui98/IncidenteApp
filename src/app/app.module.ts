@@ -18,6 +18,7 @@ import { ForgotPage } from '../pages/forgot/forgot';
 import { DetailsPage } from '../pages/details/details';
 import { HistorialPage } from '../pages/historial/historial';
 import { LocacionesPage } from '../pages/locaciones/locaciones';
+import { MapaInicialPage } from '../pages/mapaInicial/mapaInicial';
 
 // importacion de libreria para uso de protocolo HTTP
 import { HttpModule } from '@angular/http';
@@ -58,7 +59,8 @@ import { File } from '@ionic-native/file';
     ForgotPage,
     DetailsPage,
     HistorialPage,
-    LocacionesPage
+    LocacionesPage,
+    MapaInicialPage
   ],
   imports: [
     BrowserModule,
@@ -82,7 +84,8 @@ import { File } from '@ionic-native/file';
     ForgotPage,
     DetailsPage,
     HistorialPage,
-    LocacionesPage
+    LocacionesPage,
+    MapaInicialPage
   ],
   providers: [
     StatusBar,
