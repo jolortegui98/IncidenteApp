@@ -17,7 +17,6 @@ import { Storage } from '@ionic/storage';
 export class HistorialPage {
   token: any;
   public denuncias: any;
-  public id_usuario;
   public mensa = "No posee denuncias";
 
   //private geolocation: Geolocation,
@@ -37,6 +36,7 @@ export class HistorialPage {
                   if (Object.keys(this.denuncias).length) {
                     this.mensa = "Resumen de denuncias";
                   }
+                  
                 }, err => {
                   console.log(err);
                 });

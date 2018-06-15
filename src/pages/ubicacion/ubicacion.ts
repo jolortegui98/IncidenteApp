@@ -31,6 +31,7 @@ export class UbicacionPage {
   private detalleTipo;
   public ubicacion;
   public token;
+  public stringResult: string = ' ';
   public respuestas = []; 
 
   @ViewChild("map") mapElement;
@@ -132,65 +133,59 @@ export class UbicacionPage {
 
             if(this.tipoIncidente == '1'){
               if(key == 'op1'){
-                this.respuestas.push({"respuesta": "Accidente 1"});
+                this.respuestas.push("Accidente 1 <br/>");
               }else if(key == 'op2'){
-                this.respuestas.push({"respuesta": "Accidente 2"});
+                this.respuestas.push("Accidente 2 <br/>");
               }else if(key == 'op3'){
-                this.respuestas.push({"respuesta": "Accidente 3"});
+                this.respuestas.push("Accidente 3 <br/>");
               }else if(key == 'op4'){
-                this.respuestas.push({"respuesta": "Accidente 4"});
+                this.respuestas.push("Accidente 4 <br/>");
               }
             } else if(this.tipoIncidente == '2'){
               if(key == 'op1'){
-                this.respuestas.push({"respuesta": "Hurto 1"});
+                this.respuestas.push("Hurto 1 <br/>");
               }else if(key == 'op2'){
-                this.respuestas.push({"respuesta": "Hurto 2"});
+                this.respuestas.push("Hurto 2 <br/>");
               }else if(key == 'op3'){
-                this.respuestas.push({"respuesta": "Hurto 3"});
+                this.respuestas.push("Hurto 3 <br/>");
               }else if(key == 'op4'){
-                this.respuestas.push({"respuesta": "Hurto 4"});
+                this.respuestas.push("Hurto 4 <br/>");
               }
             } else if(this.tipoIncidente == '3'){
               if(key == 'op1'){
-                this.respuestas.push({"respuesta": "Incendio 1"});
+                this.respuestas.push("Incendio 1 <br/>");
               }else if(key == 'op2'){
-                this.respuestas.push({"respuesta": "Incendio 2"});
+                this.respuestas.push("Incendio 2 <br/>");
               }else if(key == 'op3'){
-                this.respuestas.push({"respuesta": "Incendio 3"});
+                this.respuestas.push("Incendio 3 <br/>");
               }else if(key == 'op4'){
-                this.respuestas.push({"respuesta": "Incendio 4"});
+                this.respuestas.push("Incendio 4 <br/>");
               }
             } else if(this.tipoIncidente == '4'){
               if(key == 'op1'){
-                this.respuestas.push({"respuesta": "Emergencia 1"});
+                this.respuestas.push("Emergencia 1 <br/>");
               }else if(key == 'op2'){
-                this.respuestas.push({"respuesta": "Emergencia 2"});
+                this.respuestas.push("Emergencia 2 <br/>");
               }else if(key == 'op3'){
-                this.respuestas.push({"respuesta": "Emergencia 3"});
+                this.respuestas.push("Emergencia 3 <br/>");
               }else if(key == 'op4'){
-                this.respuestas.push({"respuesta": "Emergencia 4"});
+                this.respuestas.push("Emergencia 4 <br/>");
               }
           }
         }
       }
-        console.log("Array respuestas");
-        console.log(this.respuestas);
 
+        for (let key in this.respuestas) {
+          this.stringResult += this.respuestas[key];
+        }
+        console.log(this.stringResult);
 
-
-        /*var ids:string = [];
-
-        for(let result of this.detalleTipo){
-          ids.push(result.Id);
-        }*/
-                
         // get token from storage
         if (this.platform.is('cordova')) {
           this.storage.get('token').then( token => { this.token = token } );
         } else {
           this.token = localStorage.getItem('token');
         }
-        //console.log(this.token);
       }
 
       enviarIncidente() {
@@ -203,7 +198,7 @@ export class UbicacionPage {
         // prepare json to post
         let json = {
           tipo_incidente: this.tipoIncidente,
-          descripcion: this.respuestas,
+          descripcion: this.stringResult,
           ubicacion: this.ubicacion,
           estado: 1
         }

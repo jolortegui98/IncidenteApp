@@ -5,7 +5,6 @@
         </ion-title>
     </ion-navbar>
 </ion-header>
-
 <ion-content padding>
     <h4>Resumen de denuncia</h4>
     <p><b>Tipo de incidente</b></p>
@@ -23,13 +22,11 @@
     </ng-template>
     <div *ngIf="incidente?.tipo_incidente == 4;then content4"></div>
     <ng-template #content4>
-        <p>Emergencia medica</p>
+        <p>Emergencia médica</p>
     </ng-template>
-    <p><b>Descripcion</b></p>
-    <li *ngFor="let item of incidente?.descripcion; let i = index">
-        {{item.respuesta}}
-    </li>
-    <br />
+    <p><u>Descripcion</u></p>
+    <div innerHTML="{{incidente?.descripcion}}"></div>
+    <br/>
     <hr />
     <button ion-button (click)="takePhoto()" full color="primary">Tomar foto</button>
     <p align="center"><img src="{{ myphoto }}"></p>

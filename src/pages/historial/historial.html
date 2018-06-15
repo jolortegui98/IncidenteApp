@@ -12,20 +12,35 @@
             <h3>{{ mensa }}</h3>
         </div>
         <ion-item *ngFor="let denuncia of denuncias">
-            <b>Denuncia tipo</b>
-            <h2>{{denuncia.tipo_incidente}}</h2>
+            <p><b><u>Denuncia tipo</u></b></p>
+            <div *ngIf="denuncia.tipo_incidente == 1;then content1"></div>
+            <ng-template #content1>
+                <p>Accidente de tránsito</p>
+            </ng-template>
+            <div *ngIf="denuncia.tipo_incidente == 2;then content2"></div>
+            <ng-template #content2>
+                <p>Hurto</p>
+            </ng-template>
+            <div *ngIf="denuncia.tipo_incidente == 3;then content3"></div>
+            <ng-template #content3>
+                <p>Incendio</p>
+            </ng-template>
+            <div *ngIf="denuncia.tipo_incidente == 4;then content4"></div>
+            <ng-template #content4>
+                <p>Emergencia médica</p>
+            </ng-template>
             <br/>
             <p><u>Numero de denuncia</u></p>
             <p>{{denuncia.id}}</p>
             <br/>
             <p><u>Descripcion</u></p>
-            <li *ngFor="let item of denuncia.descripcion; let i = index">
-                {{item}}
-            </li>
+            <div innerHTML="{{denuncia.descripcion}}"></div>
+            <br/>
             <p><u>Imagen</u></p>
-            <div *ngIf="denuncia.imagen;then content else other"></div>
-            <ng-template #content>
-                <p><img src="http://incidentespy.info/core/uploads/images/{{denuncia.imagen}}"></p>
+            <div *ngIf="denuncia.imagen;then contentImagen else other"></div>
+            <ng-template #contentImagen>
+                <img src="http://incidentespy.info/core/uploads/images/{{denuncia.imagen}}">
+                <br/>
             </ng-template>
             <ng-template #other>
                 <p><img src="http://incidentespy.info/core/uploads/no_image.png"></p>
@@ -34,12 +49,11 @@
             <div *ngIf="denuncia.comentario;then content"></div>
             <ng-template #content>
                 <p><u>Comentario</u></p>
-                <p>{{denuncia.comentario}}"></p>
+                <p>{{denuncia.comentario}}</p>
             </ng-template>
             <br/>
             <p><u>Fecha de denuncia</u></p>
             <p>{{denuncia.creacion}}</p>
-            <br/>
         </ion-item>
     </ion-list>
 </ion-content>
