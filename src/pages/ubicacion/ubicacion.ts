@@ -58,7 +58,7 @@ export class UbicacionPage {
         });
         loader.present();
 
-    let locationOptions = {timeout: 12000, enableHighAccuracy: false};
+    let locationOptions = {timeout: 9000, enableHighAccuracy: false};
 
     this.geolocation.getCurrentPosition(locationOptions).then((position) => {
 
@@ -113,16 +113,6 @@ export class UbicacionPage {
         // Capture data of the previous page
         this.tipoIncidente = this.navParams.get('tipoIncidente');
         this.detalleTipo = this.navParams.get('detalleTipo');
-      
-        //let respuesta_user = []; 
-
-        /*let enumerableKeys = [];  
-        for (let key in this.detalleTipo) {  
-          enumerableKeys.push(key);
-        }
-        console.log("enumarableksys");
-        console.log(enumerableKeys);
-        */
 
         for (let key in this.detalleTipo) {
          // let value =this.detalleTipo[key];
@@ -143,13 +133,13 @@ export class UbicacionPage {
               }
             } else if(this.tipoIncidente == '2'){
               if(key == 'op1'){
-                this.respuestas.push("Hurto 1 <br/>");
+                this.respuestas.push("Violencia 1 <br/>");
               }else if(key == 'op2'){
-                this.respuestas.push("Hurto 2 <br/>");
+                this.respuestas.push("Violencia 2 <br/>");
               }else if(key == 'op3'){
-                this.respuestas.push("Hurto 3 <br/>");
+                this.respuestas.push("Violencia 3 <br/>");
               }else if(key == 'op4'){
-                this.respuestas.push("Hurto 4 <br/>");
+                this.respuestas.push("Violencia 4 <br/>");
               }
             } else if(this.tipoIncidente == '3'){
               if(key == 'op1'){

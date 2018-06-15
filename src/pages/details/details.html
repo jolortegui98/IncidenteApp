@@ -14,7 +14,7 @@
     </ng-template>
     <div *ngIf="incidente?.tipo_incidente == 2;then content2"></div>
     <ng-template #content2>
-        <p>Hurto</p>
+        <p>Violencia</p>
     </ng-template>
     <div *ngIf="incidente?.tipo_incidente == 3;then content3"></div>
     <ng-template #content3>
@@ -37,5 +37,4 @@
     <br/>
     <button ion-button (click)="uploadImage()" full color="dark">Actualizar incidente</button>
 
-    <btn-back></btn-back>
 </ion-content>

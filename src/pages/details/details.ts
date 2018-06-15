@@ -40,11 +40,12 @@ export class DetailsPage {
       console.log(this.token);
   
       this.incidente = this.navParams.get('incidente');
+
     }
 
   takePhoto(){
     const options: CameraOptions = {
-      quality: 40,
+      quality: 30,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -62,8 +63,14 @@ export class DetailsPage {
   }
 
   uploadImage(){
+          //Show loading
+          let loader = this.loadingCtrl.create({
+            content: "Actualizando incidente..."
+            });
+
         // foto no creada
         if(!this.myphoto){
+          loader.dismiss();
           this.mensajeError().then((result) => {
             if(result === false){
               // Se redirecciona al inicio
@@ -71,12 +78,8 @@ export class DetailsPage {
             }
           })
         }
-
-        //Show loading
-        let loader = this.loadingCtrl.create({
-          content: "Actualizando incidente..."
-        });
-        //loader.present();
+    
+          
 
     //create file transfer object
     const fileTransfer: FileTransferObject = this.transfer.create();
@@ -102,14 +105,15 @@ export class DetailsPage {
       .then((data) => {
         
         // si ambos valores estan cargadors
+        loader.present(); 
         this.actualizarIncidente(this.comentario, options.fileName);
+        loader.dismiss(); 
         this.mensajeExito().then((result) => {
           if(result){
             // Se redirecciona solo cuando presiona OK
             this.navCtrl.push(InicioPage);
           }
         })
-        loader.dismiss();
 
       }, (err) => {
         console.log(err);
@@ -130,8 +134,7 @@ export class DetailsPage {
             text: 'Aceptar',
             handler : () =>{ }
           }, 
-        ],
-        enableBackdropDismiss : true
+        ]
         }).present();
       })
       }

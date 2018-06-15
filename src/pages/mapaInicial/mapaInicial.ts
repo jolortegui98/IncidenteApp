@@ -1,7 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http } from '@angular/http';
-import { Geolocation } from '@ionic-native/geolocation';
 import { ConnectivityService } from '../../providers/network/connectivity-service';
 import { LoadingController } from 'ionic-angular';
 // Components
@@ -29,7 +28,6 @@ export class MapaInicialPage {
     private http: Http,
     public navParams: NavParams,
     private connectivityService: ConnectivityService, 
-    private geolocation: Geolocation,
     private loadingCtrl: LoadingController) {
       this.valor = '1';
     }
@@ -62,12 +60,10 @@ export class MapaInicialPage {
     content: "Cargando mapa..."
     });
     loader.present();
-    
-    let locationOptions = {timeout: 10000, enableHighAccuracy: true};
-    this.geolocation.getCurrentPosition(locationOptions).then((position) => {
+
       // setear lat lng
-      this.lato = position.coords.latitude;
-      this.lngo =  position.coords.longitude;
+      this.lato = -25.280764;
+      this.lngo = -57.600111;
 
       this.http.get(`${URL}/incidente/dependencia/`+x).subscribe(datae => {
         var json = datae.json();
@@ -82,27 +78,7 @@ export class MapaInicialPage {
         }
         
         var map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
-        
-        // mi marcador 
-
-        let markerActual = new google.maps.Marker({
-          map: map,
-          animation: google.maps.Animation.DROP,
-          position: latLngs
-      });
   
-      let markerInfo = "<h4>Estas aquí</h4>";
-  
-      let infoModal = new google.maps.InfoWindow({
-          content: markerInfo
-      });
-  
-      google.maps.event.addListener(markerActual, 'click', () => {
-          infoModal.open(map, markerActual);
-      });
-
-        // mi marcador
-    
         // Looping through the JSON data
         for (var i = 0, length = json.length; i < length; i++) {
           var data = json[i],
@@ -158,10 +134,6 @@ export class MapaInicialPage {
       });
 
       loader.dismiss();
-    }).catch((error) => {
-      //loader.dismiss();
-      console.log('Error getting location', error);
-    });
 
   }
 
