@@ -113,6 +113,16 @@ export class UbicacionPage {
         // Capture data of the previous page
         this.tipoIncidente = this.navParams.get('tipoIncidente');
         this.detalleTipo = this.navParams.get('detalleTipo');
+      
+        //let respuesta_user = []; 
+
+        /*let enumerableKeys = [];  
+        for (let key in this.detalleTipo) {  
+          enumerableKeys.push(key);
+        }
+        console.log("enumarableksys");
+        console.log(enumerableKeys);
+        */
 
         for (let key in this.detalleTipo) {
          // let value =this.detalleTipo[key];
