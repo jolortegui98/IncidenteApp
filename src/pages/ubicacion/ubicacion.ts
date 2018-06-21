@@ -133,43 +133,95 @@ export class UbicacionPage {
 
             if(this.tipoIncidente == '1'){
               if(key == 'op1'){
-                this.respuestas.push("Accidente 1 <br/>");
+                this.respuestas.push("Arrollamiento a personas<br>");
               }else if(key == 'op2'){
-                this.respuestas.push("Accidente 2 <br/>");
+                this.respuestas.push("Colisión automóvil - motocicleta<br>");
               }else if(key == 'op3'){
-                this.respuestas.push("Accidente 3 <br/>");
+                this.respuestas.push("Colisión automóvil - automóvil<br>");
               }else if(key == 'op4'){
-                this.respuestas.push("Accidente 4 <br/>");
+                this.respuestas.push("Colisión ómnibus - motocicleta<br>");
+              }else if(key == 'op5'){
+                this.respuestas.push("Colisión ómnibus - automóvil<br>");
+              }else if(key == 'op6'){
+                this.respuestas.push("Víctima fatal<br>");
+              }else if(key == 'op7'){
+                this.respuestas.push("Otro incidente<br>");
               }
             } else if(this.tipoIncidente == '2'){
               if(key == 'op1'){
-                this.respuestas.push("Violencia 1 <br/>");
+                this.respuestas.push("Violencia intrafamiliar<br>");
               }else if(key == 'op2'){
-                this.respuestas.push("Violencia 2 <br/>");
+                this.respuestas.push("Violencia de género<br>");
               }else if(key == 'op3'){
-                this.respuestas.push("Violencia 3 <br/>");
+                this.respuestas.push("Agresión verbal<br>");
               }else if(key == 'op4'){
-                this.respuestas.push("Violencia 4 <br/>");
+                this.respuestas.push("Riña callejera<br>");
+              }else if(key == 'op5'){
+                this.respuestas.push("Víctima fatal<br>");
+              }else if(key == 'op6'){
+                this.respuestas.push("Otro incidente<br>");
               }
             } else if(this.tipoIncidente == '3'){
               if(key == 'op1'){
-                this.respuestas.push("Incendio 1 <br/>");
+                this.respuestas.push("Incendio de inmueble<br>");
               }else if(key == 'op2'){
-                this.respuestas.push("Incendio 2 <br/>");
+                this.respuestas.push("Incendio de vehiculo<br>");
               }else if(key == 'op3'){
-                this.respuestas.push("Incendio 3 <br/>");
+                this.respuestas.push("Perdida material<br>");
               }else if(key == 'op4'){
-                this.respuestas.push("Incendio 4 <br/>");
+                this.respuestas.push("Víctima fatal<br>");
+              }else if(key == 'op5'){
+                this.respuestas.push("Otro incidente<br>");
               }
             } else if(this.tipoIncidente == '4'){
               if(key == 'op1'){
-                this.respuestas.push("Emergencia 1 <br/>");
+                this.respuestas.push("Descompensación<br>");
               }else if(key == 'op2'){
-                this.respuestas.push("Emergencia 2 <br/>");
+                this.respuestas.push("Desmayo<br>");
               }else if(key == 'op3'){
-                this.respuestas.push("Emergencia 3 <br/>");
+                this.respuestas.push("Persona herida<br>");
               }else if(key == 'op4'){
-                this.respuestas.push("Emergencia 4 <br/>");
+                this.respuestas.push("Persona convulsionando<br>");
+              }else if(key == 'op5'){
+                this.respuestas.push("Trabajo de parto<br>");
+              }else if(key == 'op6'){
+                this.respuestas.push("Víctima fatal<br>");
+              }else if(key == 'op7'){
+                this.respuestas.push("Otro incidente<br>");
+              }
+            } else if(this.tipoIncidente == '5'){
+              if(key == 'op1'){
+                this.respuestas.push("Asalto a mano armada<br>");
+              }else if(key == 'op2'){
+                this.respuestas.push("Asalto de motoasaltante<br>");
+              }else if(key == 'op3'){
+                this.respuestas.push("Asalto a vivienda<br>");
+              }else if(key == 'op4'){
+                this.respuestas.push("Asalto a comercio<br>");
+              }else if(key == 'op5'){
+                this.respuestas.push("Perdida material<br>");
+              }else if(key == 'op6'){
+                this.respuestas.push("Víctima fatal<br>");
+              }else if(key == 'op7'){
+                this.respuestas.push("Otro incidente<br>");
+              }
+            } else if(this.tipoIncidente == '6'){
+              if(key == 'op1'){
+                this.respuestas.push("Inundaciones<br>");
+              }else if(key == 'op2'){
+                this.respuestas.push("Cañerías rotas en vías públicas<br>");
+              }else if(key == 'op3'){
+                this.respuestas.push("Alcantarillado bloqueado<br>");
+              }else if(key == 'op4'){
+                this.respuestas.push("Raudales<br>");
+              }else if(key == 'op5'){
+                this.respuestas.push("Tendido eléctrico caído<br>");
+              }else if(key == 'op6'){
+                this.respuestas.push("Polución sonora<br>");
+              }else if(key == 'op7'){
+                this.respuestas.push("Víctima fatal<br>");
+              }else if(key == 'op8'){
+                this.respuestas.push("Otro incidente<br>");
               }
           }
         }

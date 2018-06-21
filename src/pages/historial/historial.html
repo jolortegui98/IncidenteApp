@@ -29,6 +29,14 @@
             <ng-template #content4>
                 <p>Emergencia médica</p>
             </ng-template>
+            <div *ngIf="denuncia.tipo_incidente == 5;then content5"></div>
+            <ng-template #content5>
+                <p>Sustracción de pertenencia</p>
+            </ng-template>
+            <div *ngIf="denuncia.tipo_incidente == 6;then content6"></div>
+            <ng-template #content6>
+                <p>Incidente ambientale</p>
+            </ng-template>
             <br/>
             <p><u>Numero de denuncia</u></p>
             <p>{{denuncia.id}}</p>

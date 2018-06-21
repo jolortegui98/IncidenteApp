@@ -12,46 +12,71 @@
     <!-- if accident -->
     <ion-list *ngIf="tipoIncidente === '1'" no-lines id="type">
         <ion-item>
-            <ion-label>Accidente 1</ion-label>
+            <ion-label>Arrollamiento a personas</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Accidente 2</ion-label>
+            <ion-label>Colisión automóvil - motocicleta</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Accidente 3</ion-label>
+            <ion-label>Colisión automóvil - automóvil</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Accidente 4</ion-label>
+            <ion-label>Colisión ómnibus - motocicleta</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Colisión ómnibus - automóvil</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op5"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Víctima fatal</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op6"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Otro incidente</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op7"></ion-checkbox>
         </ion-item>
     </ion-list>
 
     <!-- if theft -->
     <ion-list *ngIf="tipoIncidente === '2'" no-lines id="type">
         <ion-item>
-            <ion-label>Violencia 1</ion-label>
+            <ion-label>Violencia intrafamiliar</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Violencia 2</ion-label>
+            <ion-label>Violencia de género</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Violencia 3</ion-label>
+            <ion-label>Agresión verbal</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Violencia 4</ion-label>
+            <ion-label>Riña callejera</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Víctima fatal</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op5"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Otro incidente</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op6"></ion-checkbox>
         </ion-item>
     </ion-list>
 
@@ -59,46 +84,147 @@
     <!-- if fire -->
     <ion-list *ngIf="tipoIncidente === '3'" no-lines id="type">
         <ion-item>
-            <ion-label>Incendio 1</ion-label>
+            <ion-label>Incendio de inmueble</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Incendio 2</ion-label>
+            <ion-label>Incendio de vehiculo</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Incendio 3</ion-label>
+            <ion-label>Perdida material</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Incendio 4</ion-label>
+            <ion-label>Víctima fatal</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Otro incidente</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op5"></ion-checkbox>
         </ion-item>
     </ion-list>
 
     <!-- if health emergency -->
     <ion-list *ngIf="tipoIncidente === '4'" no-lines id="type">
         <ion-item>
-            <ion-label>Emergencia de Salud 1</ion-label>
+            <ion-label>Descompensación</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Emergencia de Salud 2</ion-label>
+            <ion-label>Desmayo</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Emergencia de Salud 3</ion-label>
+            <ion-label>Persona herida</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
         </ion-item>
 
         <ion-item>
-            <ion-label>Emergencia de Salud 4</ion-label>
+            <ion-label>Persona convulsionando</ion-label>
             <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Trabajo de parto</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op5"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Víctima fatal</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op6"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Otro incidente</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op7"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+
+    <!-- if theft -->
+    <ion-list *ngIf="tipoIncidente === '5'" no-lines id="type">
+        <ion-item>
+            <ion-label>Asalto a mano armada</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Asalto de motoasaltante</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Asalto a vivienda</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Asalto a comercio</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Perdida material</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op5"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Víctima fatal</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op6"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Otro incidente</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op7"></ion-checkbox>
+        </ion-item>
+    </ion-list>
+
+    <!-- if theft -->
+    <ion-list *ngIf="tipoIncidente === '6'" no-lines id="type">
+        <ion-item>
+            <ion-label>Inundaciones</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op1"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Cañerías rotas en vías públicas</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op2"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Alcantarillado bloqueado</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op3"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Raudales</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op4"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Tendido eléctrico caído</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op5"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Polución sonora</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op6"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Víctima fatal</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op7"></ion-checkbox>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Otro incidente</ion-label>
+            <ion-checkbox [(ngModel)]="detalleTipo.op8"></ion-checkbox>
         </ion-item>
     </ion-list>
 
